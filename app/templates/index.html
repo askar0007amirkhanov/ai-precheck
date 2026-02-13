@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Compliance Agent | Demo</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .spinner {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>AI Compliance & Onboarding Agent</h1>
+
+    <div class="grid">
+        <!-- Feature 1: Compliance Check -->
+        <div class="card">
+            <h2>🔍 Site Readiness Check</h2>
+            <p>Analyze any website for compliance gaps (Privacy Policy, ToS, etc.) using AI.</p>
+
+            <form id="checkForm">
+                <label>Company/Site Name</label>
+                <input type="text" id="companyName" placeholder="e.g. My Startup" required>
+
+                <label>Website URL</label>
+                <input type="url" id="siteUrl" placeholder="https://example.com" required>
+
+                <button type="submit" class="btn">Generate Report (DOCX)</button>
+                <div class="spinner" id="spinner">Analyzing site... (this may take 10-20s)</div>
+            </form>
+        </div>
+
+        <!-- Feature 2: Policy Widget -->
+        <div class="card">
+            <h2>🛡️ Dynamic Policy Widget</h2>
+            <p>Below is a live example of the Shadow DOM widget embedded on a client's site.</p>
+            <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; border: 2px dashed #ccc;">
+                <!-- Widget Embed Code -->
+                <h3>Client Website Footer</h3>
+                <p>Embed code:</p>
+                <code>&lt;script src="/static/js/widget.js" ...&gt;&lt;/script&gt;</code>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+                <!-- The Widget Container -->
+                <script src="/static/js/widget.js" data-client-id="demo-client-123" data-api-base=""></script>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('checkForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const spinner = document.getElementById('spinner');
+
+            btn.disabled = true;
+            spinner.style.display = 'block';
+
+            try {
+                const response = await fetch('/api/compliance/check', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        url: document.getElementById('siteUrl').value,
+                        company_name: document.getElementById('companyName').value
+                    })
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error('Analysis failed: ' + errorText);
+                }
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+
+                // Create link to trigger download forcedly for DOCX
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `compliance_report_${document.getElementById('companyName').value}.docx`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            } catch (err) {
+                alert('Error: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                spinner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
