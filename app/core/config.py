@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     VERSION: str = "0.1.0"
-    DATABASE_URL: str = "sqlite:///./compliance.db"
+    DATABASE_URL: str = "sqlite+aiosqlite:///./compliance.db"
     REDIS_URL: str | None = None
     LOG_LEVEL: str = "INFO"
     
