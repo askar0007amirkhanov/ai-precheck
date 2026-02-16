@@ -1,661 +1,115 @@
-2026-02-16T09:23:14.000000000Z [inf]  Starting Container
-2026-02-16T09:23:18.409338580Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:18.409349454Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:18.409352506Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409358966Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:18.409359379Z [err]      config.load()
-2026-02-16T09:23:18.409364028Z [err]      return runner.run(main)
-2026-02-16T09:23:18.409369488Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:18.409371094Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409378745Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:18.409378916Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:18.409385060Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:18.409389146Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409391581Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409398745Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:18.409405999Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:18.409412692Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409425419Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:18.409431548Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:18.409437683Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409443871Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:18.409508057Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:18.409514684Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:18.409520393Z [err]      sys.exit(main())
-2026-02-16T09:23:18.409526282Z [err]               ^^^^^^
-2026-02-16T09:23:18.409532037Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:18.409537585Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:18.409543344Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409548853Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:18.409554764Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:18.409560342Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409566147Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:18.409572021Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:18.409577841Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409583684Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:18.409590388Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:18.409596779Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.409602386Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:18.409608005Z [err]      run(
-2026-02-16T09:23:18.409613545Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:18.409619494Z [err]      server.run()
-2026-02-16T09:23:18.409630872Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:18.409636474Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:18.411182871Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:18.411189119Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:18.411194553Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:18.411200344Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:18.411216539Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:18.411222238Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:18.411228069Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:18.411234062Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:18.411240049Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:18.411246955Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:18.411252492Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:18.411258335Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.411264309Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:18.411270025Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:18.411276933Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:18.411282934Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:18.411288950Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:18.411295012Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:19.354188250Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:19.354198792Z [err]      server.run()
-2026-02-16T09:23:19.354206012Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:19.354213467Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:19.354225291Z [err]      sys.exit(main())
-2026-02-16T09:23:19.354228056Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:19.354233658Z [err]               ^^^^^^
-2026-02-16T09:23:19.354236312Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.354238960Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:19.354243512Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:19.354245298Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:19.354250556Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:19.354259877Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.354264179Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:19.354270629Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:19.354272088Z [err]      run(
-2026-02-16T09:23:19.354276556Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.354281837Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:19.354291101Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:19.354295316Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:19.354301111Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.354303068Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:19.359649972Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.359654906Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:19.359660396Z [err]      return runner.run(main)
-2026-02-16T09:23:19.359666162Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.359671425Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:19.359676605Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:19.359682082Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.359688913Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:19.359694732Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:19.359700614Z [err]      config.load()
-2026-02-16T09:23:19.359706117Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:19.359711378Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:19.359716865Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.359722428Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:19.359729429Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:19.359736187Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.359742035Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:19.359748096Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:19.359753739Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.359759090Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:19.361519077Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:19.361523491Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:19.361527731Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:19.361532503Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:19.361536429Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:19.361545207Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:19.361549741Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:19.361553904Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:19.361558160Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:19.361562470Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:19.361566858Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:19.361571320Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.361575589Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:19.361579833Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:19.361584978Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:19.361589136Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:19.361594355Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:19.361600279Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:21.366966066Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.366966974Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.366967374Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.366975030Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:21.366980563Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:21.366982458Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:21.366984906Z [err]      config.load()
-2026-02-16T09:23:21.366990236Z [err]      return runner.run(main)
-2026-02-16T09:23:21.366994257Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:21.366998366Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:21.366998743Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:21.367003641Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.367008371Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:21.367012291Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.367016961Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:21.367020502Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.367025502Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:21.367030314Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:21.367032180Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:21.367039464Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:21.367116444Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:21.367121965Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:21.367127300Z [err]      sys.exit(main())
-2026-02-16T09:23:21.367138836Z [err]               ^^^^^^
-2026-02-16T09:23:21.367147754Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:21.367153860Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:21.367160914Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.367166563Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:21.367171928Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:21.367177898Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.367182524Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:21.367188420Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:21.367193917Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.367198629Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:21.367203945Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:21.367214564Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.367232785Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:21.367239532Z [err]      run(
-2026-02-16T09:23:21.367245892Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:21.367252126Z [err]      server.run()
-2026-02-16T09:23:21.367258778Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:21.367265256Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:21.369018199Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:21.369024828Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:21.369031811Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:21.369036713Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:21.369041615Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:21.369046902Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:21.369051688Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:21.369056315Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:21.369060954Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:21.369065987Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:21.369070899Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:21.369076112Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.369082712Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:21.369086809Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:21.369093091Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:21.369097714Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:21.369103174Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:21.369108174Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:22.515594412Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:22.515603026Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:22.515608506Z [err]      sys.exit(main())
-2026-02-16T09:23:22.515614004Z [err]               ^^^^^^
-2026-02-16T09:23:22.515618855Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:22.515624951Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:22.515632719Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.515639429Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:22.519286382Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:22.519298455Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.519305950Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:22.519313487Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:22.519320821Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.519327944Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:22.519334271Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:22.519340903Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.519347812Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:22.519355201Z [err]      run(
-2026-02-16T09:23:22.519361952Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:22.519367916Z [err]      server.run()
-2026-02-16T09:23:22.519374672Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:22.519381631Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:22.519388368Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.519394310Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:22.519400118Z [err]      return runner.run(main)
-2026-02-16T09:23:22.519409551Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.519416114Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:22.519421991Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:22.519427737Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.519434930Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:22.522421780Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:22.522433610Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:22.522442088Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:22.522450458Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:22.522451787Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:22.522461681Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:22.522464756Z [err]      config.load()
-2026-02-16T09:23:22.522471862Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:22.522477935Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:22.522484263Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.522490612Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:22.522498105Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:22.522504444Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.522511423Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:22.522522522Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:22.522529236Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.522538065Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:22.522544568Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:22.522550581Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:22.524416349Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:22.524434636Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:22.524446570Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:22.524454806Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:22.524462488Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.524470175Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:22.524477362Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:22.524484565Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:22.524491596Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:22.524499616Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:22.524507325Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:24.442063086Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:24.442065029Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:24.442074706Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:24.442076801Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:24.442082340Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.442090652Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:24.442091543Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:24.442098386Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:24.442099075Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:24.442105023Z [err]      sys.exit(main())
-2026-02-16T09:23:24.442111926Z [err]               ^^^^^^
-2026-02-16T09:23:24.442114975Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.442122879Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:24.442127337Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:24.442131446Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.442136220Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:24.442140642Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:24.442144831Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.442149872Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:24.442154131Z [err]      run(
-2026-02-16T09:23:24.442158380Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:24.442164850Z [err]      server.run()
-2026-02-16T09:23:24.444316280Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:24.444322158Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.444327187Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:24.444332222Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:24.444335619Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.444340420Z [err]      return runner.run(main)
-2026-02-16T09:23:24.444345731Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:24.444348083Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.444353160Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:24.444357465Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:24.444361796Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.444365365Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:24.444369552Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:24.444373565Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.444376742Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:24.444381376Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:24.444384582Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.444389213Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:24.444392762Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:24.444397396Z [err]      config.load()
-2026-02-16T09:23:24.446432766Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:24.446443298Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:24.446445646Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:24.446450922Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:24.446454967Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.446458240Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:24.446463575Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:24.446466354Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:24.446473137Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:24.446473715Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:24.446481571Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:24.446482601Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:24.446488986Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:24.446490826Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:24.446496755Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:24.446499253Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:24.446504548Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:24.446507078Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:26.389665481Z [err]      server.run()
-2026-02-16T09:23:26.389673433Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:26.389685913Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:26.389692689Z [err]      sys.exit(main())
-2026-02-16T09:23:26.389696347Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:26.389702126Z [err]               ^^^^^^
-2026-02-16T09:23:26.389713473Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:26.389715098Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:26.389725040Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:26.389731518Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.389738289Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:26.389744766Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:26.389752213Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.389759817Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:26.389766678Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:26.389773027Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.389780977Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:26.389787153Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:26.389792830Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.389798554Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:26.389807501Z [err]      run(
-2026-02-16T09:23:26.389813295Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:26.392228219Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.392242523Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:26.392248597Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.392252270Z [err]      return runner.run(main)
-2026-02-16T09:23:26.392263601Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:26.392265223Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.392275450Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:26.392276979Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:26.392289206Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:26.392290666Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.392301156Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:26.392303817Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.392312763Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:26.392316522Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:26.392321844Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.392332071Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:26.392335800Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:26.392342921Z [err]      config.load()
-2026-02-16T09:23:26.392349357Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:26.392356200Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:26.393992450Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:26.394005169Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:26.394013962Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:26.394021647Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:26.394028767Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:26.394035982Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:26.394042995Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:26.394050180Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:26.394056592Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:26.394062668Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:26.394069211Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:26.394076531Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.394082871Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:26.394090084Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:26.394097071Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:26.394104187Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:26.394110658Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:26.394118404Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:28.382821798Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:28.382826244Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:28.382830225Z [err]      sys.exit(main())
-2026-02-16T09:23:28.382833969Z [err]               ^^^^^^
-2026-02-16T09:23:28.382838360Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:28.382842683Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:28.382846839Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.382851510Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:28.382857426Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:28.382863502Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.382870313Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:28.382873244Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:28.382878539Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:28.382886809Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.382894836Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:28.382895524Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.382900508Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:28.382903506Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:28.382903532Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:28.382909449Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:28.382913406Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:28.382916314Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:28.382917963Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.382924077Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:28.382924133Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:28.382928670Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:28.382929361Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:28.382932755Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:28.382937068Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:28.382938680Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:28.382939485Z [err]      run(
-2026-02-16T09:23:28.382939859Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:28.382944568Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.382949126Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:28.382949561Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:28.382959336Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.382959950Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:28.382961184Z [err]      server.run()
-2026-02-16T09:23:28.382967492Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:28.382970544Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:28.382971800Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:28.382980242Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:28.382980574Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:28.382980996Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:28.382982128Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:28.382994324Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:28.382995715Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.383005200Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.383013779Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:28.383217228Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.383221170Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:28.383225890Z [err]      return runner.run(main)
-2026-02-16T09:23:28.383229794Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.383233459Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:28.383238191Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:28.383242328Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:28.383246979Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:28.383251882Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:28.383255862Z [err]      config.load()
-2026-02-16T09:23:28.383259874Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:30.571744877Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.571755218Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:30.571761156Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:30.571766251Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.571771404Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:30.571776775Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:30.571782001Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.571786376Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:30.571791289Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:30.571796133Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.571801808Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:30.571802576Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:30.571810047Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:30.571810850Z [err]      run(
-2026-02-16T09:23:30.571818046Z [err]      sys.exit(main())
-2026-02-16T09:23:30.571818244Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:30.571827826Z [err]      server.run()
-2026-02-16T09:23:30.571831360Z [err]               ^^^^^^
-2026-02-16T09:23:30.571833588Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:30.571839077Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:30.571844197Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:30.571854543Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:30.573728948Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.573736753Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:30.573742022Z [err]      return runner.run(main)
-2026-02-16T09:23:30.573748426Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.573753091Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:30.573758467Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:30.573763390Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.573768329Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:30.573774196Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:30.573779260Z [err]      config.load()
-2026-02-16T09:23:30.573784067Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:30.573788135Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:30.573794365Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.573799085Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:30.573803518Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:30.573808069Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.573812996Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:30.573817597Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:30.573822204Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.573826161Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:30.575822038Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:30.575831511Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:30.575834941Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:30.575838920Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:30.575845323Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:30.575851406Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:30.575857703Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:30.575863490Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:30.575869740Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:30.575876812Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:30.575882855Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:30.575888465Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:30.575893994Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.575899705Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:30.575905677Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:30.575911498Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:30.575917986Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:30.575923790Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:32.334405936Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:32.334410081Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:32.334417650Z [err]      sys.exit(main())
-2026-02-16T09:23:32.334421590Z [err]               ^^^^^^
-2026-02-16T09:23:32.334425457Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:32.334429708Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:32.334434784Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334438880Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:32.334442964Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:32.334447081Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334451009Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:32.334455224Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:32.334460152Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334464108Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:32.334467988Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:32.334471629Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334475512Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:32.334480698Z [err]      run(
-2026-02-16T09:23:32.334486568Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:32.334492136Z [err]      server.run()
-2026-02-16T09:23:32.334497651Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:32.334503461Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:32.334653419Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334663876Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:32.334670744Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:32.334677432Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334685785Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:32.334875555Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334880727Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:32.334885058Z [err]      return runner.run(main)
-2026-02-16T09:23:32.334892203Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334896504Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:32.334900808Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:32.334905051Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334909255Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:32.334916940Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:32.334920906Z [err]      config.load()
-2026-02-16T09:23:32.334925003Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:32.334930436Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:32.334934683Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.334940912Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:32.334944740Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:32.336315101Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:32.336319263Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:32.336325857Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:32.336331321Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:32.336337217Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:32.336342760Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:32.336348146Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:32.336354338Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:32.336360479Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:32.336366616Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:32.336370837Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:32.336374994Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.336379638Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:32.336384337Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:32.336389041Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:32.336403698Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:32.336409293Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:32.336414228Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:34.456971648Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:34.456978707Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.456987293Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:34.456995985Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:34.457003140Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:34.457009031Z [err]      sys.exit(main())
-2026-02-16T09:23:34.457014836Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:34.457015859Z [err]               ^^^^^^
-2026-02-16T09:23:34.457025003Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:34.457025755Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:34.457027925Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.457033618Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:34.457035228Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.457037175Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:34.457044849Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:34.457047276Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:34.457050683Z [err]      run(
-2026-02-16T09:23:34.457055137Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.457067947Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:34.457083570Z [err]      server.run()
-2026-02-16T09:23:34.457100785Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:34.457108653Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:34.461517480Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.461523634Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:34.461529673Z [err]      return runner.run(main)
-2026-02-16T09:23:34.461535482Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.461543352Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:34.461548526Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:34.461554325Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.461559929Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:34.461565907Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:34.461708801Z [err]      config.load()
-2026-02-16T09:23:34.461715283Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:34.461723290Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:34.461730829Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.461737389Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:34.461743731Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:34.461749337Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.461756077Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:34.461763109Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:34.461768429Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.461773763Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:34.462728933Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:34.462735203Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:34.462741104Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:34.462747251Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:34.462752610Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:34.462773098Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:34.462778564Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:34.462783354Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:34.462787712Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:34.462792273Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:34.462798114Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:34.462803477Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.462808355Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:34.462814526Z [err]      return AsyncEngine(sync_engine)
-2026-02-16T09:23:34.464159194Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:34.464166900Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:34.464172670Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:34.464177534Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:36.521442068Z [err]  Traceback (most recent call last):
-2026-02-16T09:23:36.521449809Z [err]    File "/usr/local/bin/uvicorn", line 8, in <module>
-2026-02-16T09:23:36.521454454Z [err]      sys.exit(main())
-2026-02-16T09:23:36.521459456Z [err]               ^^^^^^
-2026-02-16T09:23:36.521474038Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-2026-02-16T09:23:36.521478902Z [err]      return self.main(*args, **kwargs)
-2026-02-16T09:23:36.521483158Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.521488326Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-2026-02-16T09:23:36.521493676Z [err]      rv = self.invoke(ctx)
-2026-02-16T09:23:36.521498163Z [err]           ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.521502800Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-2026-02-16T09:23:36.521506918Z [err]      return ctx.invoke(self.callback, **ctx.params)
-2026-02-16T09:23:36.521510701Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.521515073Z [err]    File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-2026-02-16T09:23:36.521519230Z [err]      return callback(*args, **kwargs)
-2026-02-16T09:23:36.521522998Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.521527511Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-2026-02-16T09:23:36.521531548Z [err]      run(
-2026-02-16T09:23:36.521535468Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-2026-02-16T09:23:36.521555702Z [err]      server.run()
-2026-02-16T09:23:36.521561133Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-2026-02-16T09:23:36.521567681Z [err]      return asyncio.run(self.serve(sockets=sockets))
-2026-02-16T09:23:36.523186617Z [err]    File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-2026-02-16T09:23:36.523197669Z [err]    File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-2026-02-16T09:23:36.523206146Z [err]      return _bootstrap._gcd_import(name[level:], package, level)
-2026-02-16T09:23:36.523216352Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.523216445Z [err]    File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-2026-02-16T09:23:36.523225597Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-2026-02-16T09:23:36.523242826Z [err]      config.load()
-2026-02-16T09:23:36.523243652Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-2026-02-16T09:23:36.523250544Z [err]      return runner.run(main)
-2026-02-16T09:23:36.523255509Z [err]    File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-2026-02-16T09:23:36.523260442Z [err]      module = importlib.import_module(module_str)
-2026-02-16T09:23:36.523262683Z [err]             ^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.523264362Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.523267188Z [err]      self.loaded_app = import_from_string(self.app)
-2026-02-16T09:23:36.523273440Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.523274303Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-2026-02-16T09:23:36.523277613Z [err]    File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-2026-02-16T09:23:36.523278445Z [err]                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.523282509Z [err]      return self._loop.run_until_complete(task)
-2026-02-16T09:23:36.523288911Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.526781499Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.526791546Z [err]    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-2026-02-16T09:23:36.526792831Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1035, in __init__
-2026-02-16T09:23:36.526804485Z [err]      raise exc.InvalidRequestError(
-2026-02-16T09:23:36.526805535Z [err]    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-2026-02-16T09:23:36.526815314Z [err]  sqlalchemy.exc.InvalidRequestError: The asyncio extension requires an async driver to be used. The loaded 'pysqlite' is not async.
-2026-02-16T09:23:36.526821693Z [err]    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-2026-02-16T09:23:36.526831562Z [err]    File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-2026-02-16T09:23:36.526839696Z [err]    File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-2026-02-16T09:23:36.526848201Z [err]      from app.api.widget.router import router as widget_router
-2026-02-16T09:23:36.526850378Z [err]    File "/app/app/main.py", line 6, in <module>
-2026-02-16T09:23:36.526852776Z [err]      engine = create_async_engine(settings.DATABASE_URL, echo=False)
-2026-02-16T09:23:36.526859441Z [err]    File "/app/app/api/widget/router.py", line 3, in <module>
-2026-02-16T09:23:36.526869471Z [err]      from app.infrastructure.database import get_db
-2026-02-16T09:23:36.526874355Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-2026-02-16T09:23:36.526880166Z [err]    File "/app/app/infrastructure/database.py", line 5, in <module>
-2026-02-16T09:23:36.526887782Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 121, in create_async_engine
-2026-02-16T09:23:36.526896760Z [err]      return AsyncEngine(sync_engine)
+Starting Container
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
+    run(
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+    server.run()
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+Traceback (most recent call last):
+  File "/usr/local/bin/uvicorn", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+    config.load()
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 24, in import_from_string
+    raise exc from None
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+    from docx import Document
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'docx'
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+    from app.api.compliance.router import router as compliance_router
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "/app/app/api/compliance/router.py", line 6, in <module>
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+    from app.services.report.docx_service import DocxService
+  File "/app/app/main.py", line 7, in <module>
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/services/report/docx_service.py", line 1, in <module>
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+Traceback (most recent call last):
+  File "/usr/local/bin/uvicorn", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
+    run(
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
+    server.run()
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
+    config.load()
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
+    self.loaded_app = import_from_string(self.app)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 24, in import_from_string
+    raise exc from None
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/app/app/main.py", line 7, in <module>
+    from app.api.compliance.router import router as compliance_router
+  File "/app/app/api/compliance/router.py", line 6, in <module>
+    from app.services.report.docx_service import DocxService
+  File "/app/app/services/report/docx_service.py", line 1, in <module>
+    from docx import Document
+ModuleNotFoundError: No module named 'docx'
+Traceback (most recent call last):
+  File "/usr/local/bin/uvicorn", line 8, in <module>
