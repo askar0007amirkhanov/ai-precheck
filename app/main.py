@@ -35,4 +35,6 @@ async def read_root(request: Request):
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok", "version": settings.VERSION}
+    from app.infrastructure.database import DB_INITIALIZED
+    status = "ok" if DB_INITIALIZED else "degraded_no_db"
+    return {"status": status, "version": settings.VERSION, "db_connected": DB_INITIALIZED}
