@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     
     # AI Providers
+    LLM_PROVIDER: str = "openai" # "openai" or "gemini"
     OPENAI_API_KEY: str | None = None
     GEMINI_API_KEY: str | None = None
 

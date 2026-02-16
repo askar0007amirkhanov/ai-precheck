@@ -14,8 +14,9 @@ Railway is excellent for Docker-based projects and handles Playwright dependenci
     *   Click on the new service card.
     *   Go to the **Variables** tab.
     *   Add your secrets:
-        *   `OPENAI_API_KEY`: `sk-...` (your real key)
-        *   `GEMINI_API_KEY`: (optional)
+        *   `OPENAI_API_KEY`: `sk-...` (if using OpenAI)
+        *   `GEMINI_API_KEY`: `AIza...` (if using Gemini)
+        *   `LLM_PROVIDER`: `gemini` (Default is "openai", set this to switch)
         *   `Environment`: `production`
 5.  **Deploy**: Railway will automatically build the Docker image and deploy it.
 6.  **Verify**: Click the generated URL provided by Railway.

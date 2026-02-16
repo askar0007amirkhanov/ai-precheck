@@ -3,9 +3,12 @@ from typing import List
 from app.modules.compliance.schemas import ComplianceReport, RuleCheckResult, SiteContentExtraction
 from app.services.llm.factory import LLMFactory
 
+from app.core.config import settings
+
 class ComplianceRuleEngine:
-    def __init__(self, llm_provider: str = "openai"):
-        self.llm_client = LLMFactory.get_client(llm_provider)
+    def __init__(self, llm_provider: str = None):
+        self.provider = llm_provider or settings.LLM_PROVIDER
+        self.llm_client = LLMFactory.get_client(self.provider)
 
     async def analyze_site(self, clean_text: str) -> ComplianceReport:
         # 1. Extract Data via LLM (Non-deterministic part, constrained by schema)
