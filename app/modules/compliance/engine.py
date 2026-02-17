@@ -33,17 +33,93 @@ class ComplianceRuleEngine:
         Uses LLM for data extraction, then applies deterministic rules.
         """
         # 1. Extract data via LLM
+        system_prompt = (
+            "You are an expert compliance analyst for ECOMMBX payment processing. "
+            "Your task is to extract specific regulatory and compliance information "
+            "from a merchant website. Be strict, factual, and conservative:\n\n"
+
+            "SECTION 1 — COMPANY INFORMATION:\n"
+            "- company_name: The full LEGAL entity name (e.g. 'ABC Ltd', 'XYZ LLC'). "
+            "Look in footer, About Us, Terms & Conditions, or legal pages. "
+            "Do NOT use brand/trade names unless they ARE the legal name.\n"
+            "- registration_number: Company registration / incorporation number "
+            "(e.g. 'HE 12345', 'Company No. 789'). Often found in footer or legal pages.\n"
+            "- legal_address: The company's REGISTERED address for legal purposes. "
+            "Usually found in Terms & Conditions or footer.\n"
+            "- vat_number: VAT / tax ID (e.g. 'CY10012345A', 'GB123456789').\n"
+            "- merchant_outlet_location: The PHYSICAL place where the business operates. "
+            "This may differ from legal address. Look for office address, location.\n"
+            "- has_license_info: true ONLY if there is a mention of a regulatory license, "
+            "regulator name, or license number.\n"
+            "- license_number: The actual license number if mentioned.\n"
+            "- regulator_link: Name or URL of the regulatory authority.\n\n"
+
+            "SECTION 2 — CONTACTS:\n"
+            "- support_email: A support/contact email address (e.g. support@, info@, contact@).\n"
+            "- phone_number: A contact phone number with country code if available.\n"
+            "- physical_address: A mailing or office address for correspondence.\n"
+            "- has_contact_page: true if there is a 'Contact Us', 'Contact', or 'Support' page/section.\n\n"
+
+            "SECTION 3 — POLICIES:\n"
+            "- has_terms_conditions: true if there is a 'Terms & Conditions', 'Terms of Service', "
+            "or 'Terms of Use' page or link.\n"
+            "- has_privacy_policy: true if there is a 'Privacy Policy' or 'Data Protection Policy' page or link.\n"
+            "- has_refund_policy: true if there is a 'Refund Policy', 'Return Policy', "
+            "or 'Money Back Guarantee' page or link.\n"
+            "- has_cancellation_policy: true if there is a 'Cancellation Policy' or a section "
+            "about cancelling orders/subscriptions.\n"
+            "- has_payment_policy: true if there is a 'Payment Policy', 'Billing Policy', "
+            "or detailed payment terms page.\n"
+            "- policies_accessible_from_all_pages: true if policy links appear in the "
+            "footer, sidebar, or navigation menu (accessible site-wide).\n"
+            "- policy_mentions_service_conditions: true if the policies describe what services are provided, "
+            "how they work, or conditions of sale.\n"
+            "- policy_mentions_cancellation_terms: true if cancellation rules are described anywhere in policies.\n"
+            "- policy_mentions_refund_terms: true if refund/return deadlines, process, or conditions are described.\n"
+            "- refund_period_days: The number of days allowed for refunds (e.g. 14, 30). "
+            "null if not mentioned.\n"
+            "- policy_mentions_user_restrictions: true if there are any restrictions "
+            "(age, geography, prohibited uses).\n"
+            "- policy_mentions_company_name: true if the legal company name is explicitly stated "
+            "in the Terms or other policies as the contracting party.\n"
+            "- site_primary_language: The primary language of the website content "
+            "(e.g. 'English', 'Russian', 'Arabic').\n\n"
+
+            "SECTION 4 — PRODUCT/SERVICE DESCRIPTION:\n"
+            "- has_product_description: true if products or services are described "
+            "with details (not just a name/title).\n"
+            "- prices_in_purchase_currency: true if prices are shown with a clear currency symbol or code.\n"
+            "- all_fees_disclosed: true if all fees, taxes, shipping, and extra charges are listed.\n"
+            "- transparent_purchase_process: true if the buying flow is clear (add to cart → checkout → pay).\n\n"
+
+            "SECTION 5 — CHECKOUT:\n"
+            "- shows_final_price: true if there is evidence of a final total being shown before payment.\n"
+            "- shows_merchant_location_at_checkout: true if the merchant location is displayed during checkout.\n"
+            "- has_terms_agreement_checkbox: true if there is a checkbox to agree to "
+            "Terms & Conditions before completing a purchase.\n\n"
+
+            "SECTION 6 — RECEIPT:\n"
+            "- has_receipt_info: true if there is any mention of order confirmations, "
+            "email receipts, or transaction receipts.\n\n"
+
+            "SECTION 8 — MOBILE:\n"
+            "- has_mobile_responsive: true if there is evidence of responsive design "
+            "(viewport meta tag, media queries, mobile menu).\n\n"
+
+            "EXTRA:\n"
+            "- payment_methods_mentioned: List ALL payment methods (Visa, Mastercard, "
+            "PayPal, Crypto, bank transfer, etc.).\n\n"
+
+            "RULES:\n"
+            "- Return false/null if you are NOT confident the information is present.\n"
+            "- Do NOT infer or guess — only extract what is explicitly stated.\n"
+            "- Err on the side of false/null rather than making assumptions."
+        )
+
         extracted: SiteContentExtraction = await self.llm_client.extract_data(
             text=clean_text[:50000],
             schema=SiteContentExtraction,
-            system_prompt=(
-                "You are a compliance analyst. Extract all regulatory and policy "
-                "information from this merchant website text. Be thorough — look for "
-                "company details, contact info, all policy pages (Terms, Privacy, "
-                "Refund, Cancellation, Payment), product descriptions, checkout flow "
-                "details, and receipt/confirmation information. "
-                "If a field is not found, return null or false."
-            ),
+            system_prompt=system_prompt,
         )
 
         # 2. Apply deterministic rules per section

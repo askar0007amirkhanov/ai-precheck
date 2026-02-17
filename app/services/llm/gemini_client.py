@@ -35,6 +35,7 @@ class GeminiClient(LLMClient):
                 config=types.GenerateContentConfig(
                     response_mime_type="application/json",
                     response_schema=schema,
+                    temperature=0,
                 ),
             )
 
