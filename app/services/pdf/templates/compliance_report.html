@@ -39,7 +39,7 @@
         <div class="section-title">Critical Issues</div>
         {% for issue in critical_issues %}
         <div class="issue">
-            <strong>{{ issue.title }}</strong>
+            <strong>[{{ issue.rule_id }}] {{ issue.description }}</strong>
             <div class="recommendation">Fix: {{ issue.recommendation }}</div>
         </div>
         {% else %}

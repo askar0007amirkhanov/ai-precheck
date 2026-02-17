@@ -1,45 +1,40 @@
 # Deployment Guide
 
-This application is containerized using Docker and is ready for deployment on platforms like **Railway** or **Render**.
+## Railway (Recommended)
 
-## Option 1: Railway (Recommended)
+1. **Sign Up/Login**: Go to [railway.app](https://railway.app/) and login with GitHub.
+2. **New Project**: Click "New Project" → "Deploy from GitHub repo".
+3. **Select Repository**: Choose your `ai-precheck` repo.
+4. **Add Variables** (in the Variables tab):
+   - `LLM_PROVIDER`: `mock` (for demo) or `openai`/`gemini` (with real keys)
+   - `OPENAI_API_KEY`: your OpenAI key (if using OpenAI)
+   - `GEMINI_API_KEY`: your Gemini key (if using Gemini)
+   - `ALLOWED_ORIGINS`: your Railway domain (e.g., `https://your-app.up.railway.app`)
+   - `ENVIRONMENT`: `production`
+5. **Deploy**: Railway will build from the Dockerfile and start automatically.
+6. **Verify**: Visit the generated URL → `/health` should return `{"status": "ok", ...}`
 
-Railway is excellent for Docker-based projects and handles Playwright dependencies well.
+> **Note**: Database tables are created automatically on startup. The app uses SQLite by default — data persists across restarts on Railway but is reset on new deploys. For persistent data, switch to an external database (see below).
 
-### Steps:
-1.  **Sign Up/Login**: Go to [railway.app](https://railway.app/) and login with GitHub.
-2.  **New Project**: Click "New Project" -> "Deploy from GitHub repo".
-3.  **Select Repository**: Choose `askar0007amirkhanov/ai-precheck`.
-4.  **Add Variables**:
-    *   Click on the new service card.
-    *   Go to the **Variables** tab.
-    *   Add your secrets:
-        *   `OPENAI_API_KEY`: `sk-...` (if using OpenAI)
-        *   `GEMINI_API_KEY`: `AIza...` (if using Gemini)
-        *   `LLM_PROVIDER`: `gemini` (Default is "openai", set this to switch)
-        *   `Environment`: `production`
-5.  **Deploy**: Railway will automatically build the Docker image and deploy it.
-6.  **Verify**: Click the generated URL provided by Railway.
+## Render
 
-> **Note on Playwright**: The Dockerfile installs Playwright browsers automatically during the build process.
+1. **Sign Up/Login**: Go to [render.com](https://render.com/).
+2. **New Web Service**: Click "New +" → "Web Service".
+3. **Connect Repo**: Select `ai-precheck`.
+4. **Runtime**: Select **Docker**.
+5. **Environment Variables**: Same as Railway (above).
+6. **Create Web Service**: Deploy.
 
-## Option 2: Render
+## Future: PostgreSQL / Supabase
 
-Render is also a great option but the free tier spins down after inactivity.
+To switch from SQLite to PostgreSQL (e.g., Supabase free tier):
 
-### Steps:
-1.  **Sign Up/Login**: Go to [render.com](https://render.com/).
-2.  **New Web Service**: Click "New +" -> "Web Service".
-3.  **Connect Repo**: Select `ai-precheck`.
-4.  **Runtime**: Select **Docker**.
-5.  **Environment Variables**:
-    *   Add `OPENAI_API_KEY`.
-    *   Add `PORT`: `8000` (Render explicitly looks for this).
-6.  **Create Web Service**: Click the button to start deployment.
+1. Get a Supabase connection string (Transaction pooler, port 6543)
+2. Set `DATABASE_URL=postgresql+asyncpg://user:pass@host:6543/postgres`
+3. Redeploy — tables will be auto-created
 
 ## Important Notes
 
-*   **Mock Functionality**: If you do not provide a valid `OPENAI_API_KEY`, the application will continue to work in "Mock Mode" (returning demo data), just like it did locally.
-*   **Database**: By default, this app uses SQLite (`compliance.db`). In a real production setup on these platforms, the file system is ephemeral (changes are lost on restart).
-    *   **For Demo**: This is fine (data resets on deploy).
-    *   **For Real Use**: You should provision a PostgreSQL database (Railway provides one in one click) and set `DATABASE_URL` env var.
+- **Mock Mode**: Without valid API keys, the app works in mock mode (returns demo compliance data). Set `LLM_PROVIDER=mock` explicitly.
+- **Playwright**: The Dockerfile installs Chromium automatically. No extra setup needed.
+- **Database**: SQLite is fine for single-instance deployment. For multi-instance or persistent data, use PostgreSQL.

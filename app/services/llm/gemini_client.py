@@ -1,61 +1,83 @@
 import json
-import google.generativeai as genai
+import logging
 from typing import List, Type, Optional
+
 from pydantic import BaseModel
+from google import genai
+from google.genai import types
+
 from app.core.config import settings
 from app.services.llm.client import LLMClient
 
+logger = logging.getLogger(__name__)
+
+
 class GeminiClient(LLMClient):
-    def __init__(self, api_key: str = settings.GEMINI_API_KEY, model: str = "gemini-pro"):
-        genai.configure(api_key=api_key)
+    def __init__(self, api_key: str = None, model: str = "gemini-2.5-flash"):
+        self.client = genai.Client(api_key=api_key or settings.GEMINI_API_KEY)
         self.model_name = model
 
     async def extract_data(
-        self, 
-        text: str, 
-        schema: Type[BaseModel], 
-        system_prompt: Optional[str] = None
+        self,
+        text: str,
+        schema: Type[BaseModel],
+        system_prompt: Optional[str] = None,
     ) -> BaseModel:
-        model = genai.GenerativeModel(self.model_name)
-        
-        prompt = (
-            f"{system_prompt or 'Extract data from the text.'}\n"
-            f"Output must be valid JSON matching this schema: {schema.model_json_schema()}\n"
-            f"Text: {text}"
-        )
-        
-        # Gemini does not have strict JSON mode enforced via API param in basic SDK yet (as of v0.3.2 purely),
-        # but robust prompting usually works. For production, we might want to use stricter parsing or specialized tools.
-        response = await model.generate_content_async(prompt)
-        
-        # Simple cleanup to ensure JSON parsing
-        content = response.text.strip()
-        if content.startswith("```json"):
-            content = content[7:-3]
-        elif content.startswith("```"):
-            content = content[3:-3]
-            
-        return schema.model_validate_json(content)
+        if not system_prompt:
+            system_prompt = "You are a precise data extraction assistant. Extract the data strictly as JSON."
+
+        logger.info("Gemini: sending extraction request to %s", self.model_name)
+
+        try:
+            response = await self.client.aio.models.generate_content(
+                model=self.model_name,
+                contents=f"{system_prompt}\n\nText:\n{text}",
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                    response_schema=schema,
+                ),
+            )
+
+            # SDK auto-parses JSON into the Pydantic model when response_schema is set
+            if response.parsed is not None:
+                logger.info("Gemini: extraction successful (parsed)")
+                return response.parsed
+
+            # Fallback: manual parsing if .parsed is None
+            content = response.text.strip()
+            logger.info("Gemini: parsing response manually (%d chars)", len(content))
+            return schema.model_validate_json(content)
+
+        except Exception as e:
+            logger.error("Gemini extraction failed: %s", e, exc_info=True)
+            raise RuntimeError(f"Gemini API call failed: {e}") from e
 
     async def classify_text(
-        self, 
-        text: str, 
-        labels: List[str], 
-        multi_label: bool = False
+        self,
+        text: str,
+        labels: List[str],
+        multi_label: bool = False,
     ) -> List[str]:
-        model = genai.GenerativeModel(self.model_name)
-        
         prompt = (
-            f"Classify the text into: {', '.join(labels)}.\n"
-            f"{'Return ALL applicable labels' if multi_label else 'Return exactly ONE label'}.\n"
-            "Format: JSON object with key 'labels' (list of strings).\n"
+            f"Classify the following text into: {', '.join(labels)}.\n"
+            f"{'Return ALL applicable labels.' if multi_label else 'Return exactly ONE label.'}\n"
+            "Format: JSON object with key 'labels' containing a list of strings.\n"
             f"Text: {text}"
         )
-        
-        response = await model.generate_content_async(prompt)
-        content = response.text.strip()
-        if content.startswith("```json"):
-            content = content[7:-3]
-        
-        data = json.loads(content)
-        return data.get("labels", [])
+
+        try:
+            response = await self.client.aio.models.generate_content(
+                model=self.model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                ),
+            )
+
+            content = response.text.strip()
+            data = json.loads(content)
+            return data.get("labels", [])
+
+        except Exception as e:
+            logger.error("Gemini classification failed: %s", e, exc_info=True)
+            raise RuntimeError(f"Gemini API call failed: {e}") from e

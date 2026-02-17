@@ -1,25 +1,47 @@
+import logging
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.core.config import settings
 from app.api.widget.router import router as widget_router
 from app.api.compliance.router import router as compliance_router
 
-from fastapi.middleware.cors import CORSMiddleware
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Startup/shutdown events for the application."""
+    # Startup: create DB tables if they don't exist
+    from app.infrastructure.database import engine, DB_INITIALIZED
+    if DB_INITIALIZED and engine:
+        from app.modules.policies.models import Base
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        logger.info("Database tables ensured.")
+    else:
+        logger.warning("Database not initialized — running in degraded mode.")
+    yield
+    # Shutdown: nothing to do for now
+
 
 app = FastAPI(
     title="AI Compliance Agent",
-    version="0.1.0",
-    description="Compliance & Onboarding Agent with Modular Monolith Architecture"
+    version=settings.VERSION,
+    description="Compliance & Onboarding Agent — Merchant Site Readiness Check",
+    lifespan=lifespan,
 )
 
-# Allow all origins for local dev
+# CORS: configured via ALLOWED_ORIGINS env var
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.allowed_origins_list,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
@@ -29,12 +51,20 @@ templates = Jinja2Templates(directory="app/templates")
 app.include_router(widget_router, prefix="/api/widget", tags=["Widget"])
 app.include_router(compliance_router, prefix="/api/compliance", tags=["Compliance"])
 
+
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
 
 @app.get("/health")
 async def health_check():
     from app.infrastructure.database import DB_INITIALIZED
     status = "ok" if DB_INITIALIZED else "degraded_no_db"
-    return {"status": status, "version": settings.VERSION, "db_connected": DB_INITIALIZED}
+    return {
+        "status": status,
+        "version": settings.VERSION,
+        "environment": settings.ENVIRONMENT,
+        "llm_provider": settings.LLM_PROVIDER,
+        "db_connected": DB_INITIALIZED,
+    }

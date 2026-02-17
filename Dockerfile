@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
 # Install system dependencies for WeasyPrint (Pango, Cairo) and Playwright
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     python3-cffi \
     python3-brotli \
@@ -15,20 +15,17 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-# Install Poetry
-RUN pip install poetry
+# Install Python dependencies via requirements.txt (more reliable than Poetry for deployment)
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy configuration
-COPY pyproject.toml poetry.lock* ./
-
-# Install dependencies
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-interaction --no-ansi --no-root
-
-# Install Playwright browsers based on dependencies
-RUN poetry run playwright install --with-deps chromium
+# Install Playwright browsers
+RUN playwright install --with-deps chromium
 
 COPY . .
 
-# Start script to handle dynamic PORT
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:${PORT:-8000}/health')" || exit 1
+
+# Start with dynamic PORT (Railway, Render compatibility)
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

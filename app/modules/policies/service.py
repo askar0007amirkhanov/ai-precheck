@@ -1,9 +1,18 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from jinja2 import Template
+from jinja2 import Environment, select_autoescape
+from jinja2.sandbox import SandboxedEnvironment
 import json
+import logging
+
 from app.modules.policies.models import PolicyTemplate, ClientWidget
 from app.modules.policies.schemas import PolicyTemplateCreate, WidgetResponse
+
+logger = logging.getLogger(__name__)
+
+# Use SandboxedEnvironment to prevent SSTI attacks from DB templates
+_jinja_env = SandboxedEnvironment(autoescape=select_autoescape(["html"]))
+
 
 class PolicyService:
     def __init__(self, db: AsyncSession):
@@ -21,19 +30,19 @@ class PolicyService:
         stmt = select(ClientWidget).where(ClientWidget.id == client_id)
         result = await self.db.execute(stmt)
         widget = result.scalar_one_or_none()
-        
+
         if not widget:
             raise ValueError("Widget not found")
-            
+
         template = await self.db.get(PolicyTemplate, widget.policy_template_id)
-        
+
         # Parse config for variable injection
         context = json.loads(widget.config_json)
-        
-        # Render HTML
-        jinja_template = Template(template.content_template)
+
+        # Render HTML using sandboxed Jinja2 (prevents SSTI)
+        jinja_template = _jinja_env.from_string(template.content_template)
         html_content = jinja_template.render(**context)
-        
+
         # Generate JSON-LD (simplified example)
         json_ld = {
             "@context": "https://schema.org",
@@ -42,8 +51,8 @@ class PolicyService:
             "url": f"https://{widget.domain}/policies/{template.slug}",
             "publisher": {
                 "@type": "Organization",
-                "name": context.get("company_name", "Organization")
-            }
+                "name": context.get("company_name", "Organization"),
+            },
         }
-        
+
         return WidgetResponse(html_content=html_content, json_ld=json_ld)

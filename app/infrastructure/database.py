@@ -1,26 +1,28 @@
+import logging
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
+
+logger = logging.getLogger(__name__)
 
 try:
     engine = create_async_engine(settings.DATABASE_URL, echo=False)
     AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
     DB_INITIALIZED = True
+    logger.info("Database engine created: %s", settings.DATABASE_URL.split("://")[0])
 except Exception as e:
-    print(f"CRITICAL: Failed to initialize database: {e}")
+    logger.critical("Failed to initialize database: %s", e)
     DB_INITIALIZED = False
     engine = None
     AsyncSessionLocal = None
 
-async def get_db():
-    if not DB_INITIALIZED:
-        print("WARNING: Database not initialized, yielding mock session")
-        # Yield a mock context manager that does nothing
-        class MockSession:
-            async def __aenter__(self): return self
-            async def __aexit__(self, *args): pass
-        yield MockSession()
-        return
 
+async def get_db():
+    """Dependency that yields an async DB session."""
+    if not DB_INITIALIZED or AsyncSessionLocal is None:
+        raise RuntimeError(
+            "Database is not initialized. Check DATABASE_URL and ensure "
+            "the database is accessible."
+        )
     async with AsyncSessionLocal() as session:
         yield session

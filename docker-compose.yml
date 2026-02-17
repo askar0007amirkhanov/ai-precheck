@@ -9,41 +9,23 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/compliance_db
-      - REDIS_URL=redis://redis:6379
-    depends_on:
-      - db
-      - redis
+      - DATABASE_URL=sqlite+aiosqlite:///./compliance.db
+      - LLM_PROVIDER=mock
+      - ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
+      - LOG_LEVEL=INFO
 
-  worker:
-    build: .
-    command: arq app.worker.main.WorkerSettings
-    volumes:
-      - .:/app
-    environment:
-      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/compliance_db
-      - REDIS_URL=redis://redis:6379
-    depends_on:
-      - db
-      - redis
+  # PostgreSQL (uncomment when ready for production DB)
+  # db:
+  #   image: postgres:16-alpine
+  #   restart: always
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_DB=compliance_db
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
 
-  db:
-    image: postgres:16-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=compliance_db
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  redis:
-    image: redis:7-alpine
-    restart: always
-    ports:
-      - "6379:6379"
-
-volumes:
-  postgres_data:
+# volumes:
+#   postgres_data:
