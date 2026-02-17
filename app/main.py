@@ -16,17 +16,18 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup/shutdown events for the application."""
-    # Startup: create DB tables if they don't exist
     from app.infrastructure.database import engine, DB_INITIALIZED
     if DB_INITIALIZED and engine:
-        from app.modules.policies.models import Base
-        async with engine.begin() as conn:
-            await conn.run_sync(Base.metadata.create_all)
-        logger.info("Database tables ensured.")
+        try:
+            from app.modules.policies.models import Base
+            async with engine.begin() as conn:
+                await conn.run_sync(Base.metadata.create_all)
+            logger.info("Database tables ensured.")
+        except Exception as e:
+            logger.error("Database connection failed: %s — running in degraded mode.", e)
     else:
         logger.warning("Database not initialized — running in degraded mode.")
     yield
-    # Shutdown: nothing to do for now
 
 
 app = FastAPI(

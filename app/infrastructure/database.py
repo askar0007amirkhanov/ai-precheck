@@ -6,10 +6,14 @@ from app.core.config import settings
 logger = logging.getLogger(__name__)
 
 try:
-    engine = create_async_engine(settings.DATABASE_URL, echo=False)
+    db_url = settings.DATABASE_URL
+    # Railway gives postgresql:// but asyncpg needs postgresql+asyncpg://
+    if db_url.startswith("postgresql://"):
+        db_url = db_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+    engine = create_async_engine(db_url, echo=False)
     AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
     DB_INITIALIZED = True
-    logger.info("Database engine created: %s", settings.DATABASE_URL.split("://")[0])
+    logger.info("Database engine created: %s", db_url.split("://")[0])
 except Exception as e:
     logger.critical("Failed to initialize database: %s", e)
     DB_INITIALIZED = False

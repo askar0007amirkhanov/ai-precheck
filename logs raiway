@@ -1,115 +1,1001 @@
-Starting Container
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-    return callback(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-    run(
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-    server.run()
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-    return asyncio.run(self.serve(sockets=sockets))
-Traceback (most recent call last):
-  File "/usr/local/bin/uvicorn", line 8, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-    return self.main(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-    rv = self.invoke(ctx)
-         ^^^^^^^^^^^^^^^^
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-    config.load()
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-    self.loaded_app = import_from_string(self.app)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 24, in import_from_string
-    raise exc from None
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-    module = importlib.import_module(module_str)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-    from docx import Document
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-ModuleNotFoundError: No module named 'docx'
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-    from app.api.compliance.router import router as compliance_router
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "/app/app/api/compliance/router.py", line 6, in <module>
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-    from app.services.report.docx_service import DocxService
-  File "/app/app/main.py", line 7, in <module>
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/app/app/services/report/docx_service.py", line 1, in <module>
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-Traceback (most recent call last):
-  File "/usr/local/bin/uvicorn", line 8, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1485, in __call__
-    return self.main(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1406, in main
-    rv = self.invoke(ctx)
-         ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 1269, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/click/core.py", line 824, in invoke
-    return callback(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 418, in main
-    run(
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 587, in run
-    server.run()
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 62, in run
-    return asyncio.run(self.serve(sockets=sockets))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 69, in serve
-    config.load()
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/config.py", line 458, in load
-    self.loaded_app = import_from_string(self.app)
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 24, in import_from_string
-    raise exc from None
-  File "/usr/local/lib/python3.11/site-packages/uvicorn/importer.py", line 21, in import_from_string
-    module = importlib.import_module(module_str)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
-  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/app/app/main.py", line 7, in <module>
-    from app.api.compliance.router import router as compliance_router
-  File "/app/app/api/compliance/router.py", line 6, in <module>
-    from app.services.report.docx_service import DocxService
-  File "/app/app/services/report/docx_service.py", line 1, in <module>
-    from docx import Document
-ModuleNotFoundError: No module named 'docx'
-Traceback (most recent call last):
-  File "/usr/local/bin/uvicorn", line 8, in <module>
+2026-02-17T08:05:46.283772990Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:46.283777549Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283777758Z [err]      tr, pr = await connector
+2026-02-17T08:05:46.283782125Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:46.283783836Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283787575Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:46.283789652Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:46.283792712Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:46.283794828Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:46.283798775Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:46.283800566Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283802937Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283806403Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:46.283808319Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:46.283811356Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:46.283813541Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:46.283817824Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:46.283819778Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283823570Z [err]  
+2026-02-17T08:05:46.283824466Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:46.283829111Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:46.283829797Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:46.283833361Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283835964Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:46.283838629Z [err]      return self.pool.connect()
+2026-02-17T08:05:46.283841262Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283843777Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:46.283846512Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:46.283849018Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283851664Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:46.283854189Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:46.283856798Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283859323Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:46.283861844Z [err]      rec = pool._do_get()
+2026-02-17T08:05:46.283864560Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:46.283867529Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:46.283870582Z [err]      with util.safe_reraise():
+2026-02-17T08:05:46.284182883Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:46.540333767Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:46.540338368Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:46.540341582Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:46.540344511Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:46.540347654Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:46.540350735Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:46.540353581Z [err]      return await anext(self.gen)
+2026-02-17T08:05:46.540356190Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540358911Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:46.540361589Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:46.540364354Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:46.540366898Z [err]      return await anext(self.gen)
+2026-02-17T08:05:46.540369666Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540372517Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:46.540375499Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:46.540378225Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:46.540380785Z [err]      return await anext(self.gen)
+2026-02-17T08:05:46.540383594Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540386042Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:46.540389048Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:46.540391899Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:46.540395617Z [err]      return await anext(self.gen)
+2026-02-17T08:05:46.540398209Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540400829Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:46.540403493Z [err]      async with conn:
+2026-02-17T08:05:46.540406091Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:46.540409053Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:46.540411929Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540414783Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:46.540421780Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:46.540424902Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:46.540427794Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:46.540430995Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540434609Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:46.540437341Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:46.540440200Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540442998Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:46.540445604Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:46.540450491Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540453993Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:46.540457096Z [err]      return self.pool.connect()
+2026-02-17T08:05:46.540459950Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540462624Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:46.540465505Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:46.540468278Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540471145Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:46.540473790Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:46.540479811Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540483153Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:46.540485969Z [err]      rec = pool._do_get()
+2026-02-17T08:05:46.540488861Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540491478Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:46.540494091Z [err]      with util.safe_reraise():
+2026-02-17T08:05:46.540496830Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:46.540502334Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:46.540505266Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:46.540508221Z [err]      return self._create_connection()
+2026-02-17T08:05:46.540510926Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.540513552Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:46.540516302Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:46.540521134Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541301196Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:46.541307282Z [err]      self.__connect()
+2026-02-17T08:05:46.541310846Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:46.541313984Z [err]      with util.safe_reraise():
+2026-02-17T08:05:46.541319265Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:46.541322385Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:46.541325579Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:46.541328674Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:46.541331808Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541334752Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:46.541337580Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:46.541340396Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541343314Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:46.541346263Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:46.541349448Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541352198Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:46.541355229Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:46.541359424Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541364140Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:46.541366986Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:46.541369553Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541372121Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:46.541375019Z [err]      value = await result
+2026-02-17T08:05:46.541377800Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:46.541380701Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:46.541385623Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:46.541388427Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541391741Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:46.541394909Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:46.541398186Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:46.541400914Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:46.541403653Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541406446Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:46.541409934Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:46.541413881Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541417065Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:46.541419900Z [err]      tr, pr = await connector
+2026-02-17T08:05:46.541422640Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541425463Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:46.541429206Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:46.541431814Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:46.541435152Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:46.541437690Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:46.541442455Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:46.541445244Z [err]  
+2026-02-17T08:05:46.541447889Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:47.601549104Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:47.601555490Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:47.601559673Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:47.601562352Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:47.601565238Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:47.601568909Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:47.601571892Z [err]      return await anext(self.gen)
+2026-02-17T08:05:47.601574927Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.601578344Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:47.601581373Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:47.601584293Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:47.601587250Z [err]      return await anext(self.gen)
+2026-02-17T08:05:47.601590108Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.601593019Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:47.601596127Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:47.601601365Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:47.601604313Z [err]      return await anext(self.gen)
+2026-02-17T08:05:47.601607112Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.601609716Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:47.601612482Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:47.601615430Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:47.601618142Z [err]      return await anext(self.gen)
+2026-02-17T08:05:47.601621151Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.601623825Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:47.601626382Z [err]      async with conn:
+2026-02-17T08:05:47.601629220Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:47.609668774Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:47.609674180Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609677373Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:47.609680273Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:47.609682972Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:47.609685659Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:47.609688499Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609691396Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:47.609694202Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:47.609696877Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609699814Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:47.609702434Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:47.609705056Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609707765Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:47.609710568Z [err]      return self.pool.connect()
+2026-02-17T08:05:47.609713288Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609717992Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:47.609720835Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:47.609723537Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609726459Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:47.609729117Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:47.609731967Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609734804Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:47.609737807Z [err]      rec = pool._do_get()
+2026-02-17T08:05:47.609740490Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609743257Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:47.609745763Z [err]      with util.safe_reraise():
+2026-02-17T08:05:47.609748299Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:47.609750941Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:47.609753620Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:47.609756204Z [err]      return self._create_connection()
+2026-02-17T08:05:47.609758774Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609761578Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:47.609764601Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:47.609768080Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609771192Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:47.609773825Z [err]      self.__connect()
+2026-02-17T08:05:47.609776549Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:47.609779070Z [err]      with util.safe_reraise():
+2026-02-17T08:05:47.609781593Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:47.609784816Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:47.609787396Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:47.609790146Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:47.609792837Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609795417Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:47.609798160Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:47.609800843Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609803543Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:47.609806097Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:47.609809373Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609811992Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:47.609814535Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:47.609817477Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609819998Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:47.609822658Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:47.609825249Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609828564Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:47.609831372Z [err]      value = await result
+2026-02-17T08:05:47.609834168Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:47.609836732Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:47.609839278Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:47.609842078Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609844718Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:47.609847557Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:47.609850373Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:47.609853280Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:47.609856317Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609859126Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:47.609861612Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:47.609864082Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609866976Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:47.609871006Z [err]      tr, pr = await connector
+2026-02-17T08:05:47.609873525Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609876125Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:47.609878607Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:47.609881508Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:47.609884456Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:47.609887577Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:47.609890244Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:47.609893211Z [err]  
+2026-02-17T08:05:47.609896139Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:48.654879396Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:48.654879544Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:48.654889256Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:48.654889549Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:48.654895171Z [err]      return await anext(self.gen)
+2026-02-17T08:05:48.654897530Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:48.654900452Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.654904238Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:48.654906012Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:48.654911034Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:48.654911243Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:48.654916724Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:48.654918374Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:48.654922283Z [err]      return await anext(self.gen)
+2026-02-17T08:05:48.654925139Z [err]      return await anext(self.gen)
+2026-02-17T08:05:48.654928330Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.654931961Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.654934489Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:48.654938507Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:48.654939371Z [err]      async with conn:
+2026-02-17T08:05:48.654944627Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:48.654946116Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:48.654949704Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:48.654953625Z [err]      return await anext(self.gen)
+2026-02-17T08:05:48.654957159Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.654961095Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:48.658301559Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:48.658308739Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658313443Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:48.658316754Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:48.658319703Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:48.658322956Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:48.658326640Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658329605Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:48.658332678Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:48.658335712Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658338790Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:48.658341409Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:48.658344125Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658346932Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:48.658349624Z [err]      return self.pool.connect()
+2026-02-17T08:05:48.658352053Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658354896Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:48.658358244Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:48.658361278Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658364051Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:48.658366655Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:48.658369585Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658372399Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:48.658375356Z [err]      rec = pool._do_get()
+2026-02-17T08:05:48.658378046Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658380620Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:48.658383117Z [err]      with util.safe_reraise():
+2026-02-17T08:05:48.658385736Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:48.658388567Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:48.658391331Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:48.658393891Z [err]      return self._create_connection()
+2026-02-17T08:05:48.658396647Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658399327Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:48.658402642Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:48.658405817Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658408640Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:48.658411714Z [err]      self.__connect()
+2026-02-17T08:05:48.658414616Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:48.658417834Z [err]      with util.safe_reraise():
+2026-02-17T08:05:48.658420682Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:48.658423720Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:48.658426888Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:48.658429523Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:48.658432649Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658435155Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:48.658437847Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:48.658440734Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658443331Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:48.658446216Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:48.658449036Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658451810Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:48.658454450Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:48.658457272Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658459953Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:48.658462584Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:48.658465282Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658467928Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:48.658470474Z [err]      value = await result
+2026-02-17T08:05:48.658473164Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:48.658476079Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:48.658478715Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:48.658481571Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658484304Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:48.658486913Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:48.658489728Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:48.658492448Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:48.658495077Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658498267Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:48.658500957Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:48.658503596Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658506381Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:48.658509101Z [err]      tr, pr = await connector
+2026-02-17T08:05:48.658511938Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658514755Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:48.658517364Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:48.658520061Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:48.658523035Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:48.658525742Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:48.658528658Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:48.658531614Z [err]  
+2026-02-17T08:05:48.658534472Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:49.711032360Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:49.711038283Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:49.711041957Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:49.711045509Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:49.711048583Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:49.711052068Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:49.711055178Z [err]      return await anext(self.gen)
+2026-02-17T08:05:49.711058504Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711061546Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:49.711064534Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:49.711067465Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:49.711070488Z [err]      return await anext(self.gen)
+2026-02-17T08:05:49.711073753Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711076848Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:49.711079852Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:49.711083057Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:49.711085845Z [err]      return await anext(self.gen)
+2026-02-17T08:05:49.711089093Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711092024Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:49.711094954Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:49.711097795Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:49.711100491Z [err]      return await anext(self.gen)
+2026-02-17T08:05:49.711103569Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711106324Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:49.711109354Z [err]      async with conn:
+2026-02-17T08:05:49.711112033Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:49.711114856Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:49.711117746Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711120855Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:49.711123870Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:49.711126463Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:49.711129339Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:49.711132087Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711134686Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:49.711137514Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:49.711140233Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711142948Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:49.711145799Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:49.711148685Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711151392Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:49.711154127Z [err]      return self.pool.connect()
+2026-02-17T08:05:49.711156967Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711159618Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:49.711162458Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:49.711165181Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711168029Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:49.711170932Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:49.711173745Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711176627Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:49.711179299Z [err]      rec = pool._do_get()
+2026-02-17T08:05:49.711182661Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711185554Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:49.711188131Z [err]      with util.safe_reraise():
+2026-02-17T08:05:49.711191128Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:49.711194187Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:49.711197277Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:49.711200059Z [err]      return self._create_connection()
+2026-02-17T08:05:49.711205132Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711207760Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:49.711211114Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:49.711214239Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711217355Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:49.711220620Z [err]      self.__connect()
+2026-02-17T08:05:49.711224915Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:49.711228915Z [err]      with util.safe_reraise():
+2026-02-17T08:05:49.711232504Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:49.711235527Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:49.711238843Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:49.711242101Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:49.711244946Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711247868Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:49.711253323Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:49.711256130Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711259388Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:49.711262211Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:49.711265405Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711268705Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:49.711271911Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:49.711276242Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711279248Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:49.711282258Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:49.711285068Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711288011Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:49.711290983Z [err]      value = await result
+2026-02-17T08:05:49.711293606Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:49.711296593Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:49.711299393Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:49.711302354Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711305402Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:49.711308706Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:49.711311644Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:49.711314473Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:49.711317873Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711320515Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:49.711323585Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:49.711326627Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711329378Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:49.711332571Z [err]      tr, pr = await connector
+2026-02-17T08:05:49.711335613Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711339115Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:49.711356665Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:49.711364410Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:49.711368026Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:49.711370388Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:49.711375097Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:49.711378761Z [err]  
+2026-02-17T08:05:49.711382340Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:50.238213120Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:50.238217960Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:50.238221087Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:50.238224210Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:50.238227027Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:50.238229898Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:50.238232535Z [err]      return await anext(self.gen)
+2026-02-17T08:05:50.238235357Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238238206Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:50.238241761Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:50.238244400Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:50.238247164Z [err]      return await anext(self.gen)
+2026-02-17T08:05:50.238249747Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238252730Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:50.238255459Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:50.238258127Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:50.238261054Z [err]      return await anext(self.gen)
+2026-02-17T08:05:50.238263713Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238266695Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:50.238269217Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:50.238271811Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:50.238274592Z [err]      return await anext(self.gen)
+2026-02-17T08:05:50.238278133Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238280908Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:50.238283557Z [err]      async with conn:
+2026-02-17T08:05:50.238286349Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:50.238288830Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:50.238291677Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238294677Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:50.238297405Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:50.238300166Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:50.238302900Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:50.238305311Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238307975Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:50.238310420Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:50.238313296Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238315973Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:50.238318841Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:50.238321637Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238324275Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:50.238328055Z [err]      return self.pool.connect()
+2026-02-17T08:05:50.238330611Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238333576Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:50.238336138Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:50.238338698Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238341687Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:50.238344119Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:50.238346896Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238349437Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:50.238352175Z [err]      rec = pool._do_get()
+2026-02-17T08:05:50.238354564Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238357124Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:50.238360058Z [err]      with util.safe_reraise():
+2026-02-17T08:05:50.238362454Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:50.238364999Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:50.238367455Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:50.238369915Z [err]      return self._create_connection()
+2026-02-17T08:05:50.238372511Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238375157Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:50.238377950Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:50.238380558Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.238383331Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:50.242105905Z [err]      self.__connect()
+2026-02-17T08:05:50.242111780Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:50.242115385Z [err]      with util.safe_reraise():
+2026-02-17T08:05:50.242118591Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:50.242121863Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:50.242125183Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:50.242128625Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:50.242132265Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242135300Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:50.242138929Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:50.242142926Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242146017Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:50.242148704Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:50.242151826Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242154333Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:50.242158716Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:50.242161753Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242164810Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:50.242167862Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:50.242170611Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242174067Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:50.242178310Z [err]      value = await result
+2026-02-17T08:05:50.242181336Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:50.242184002Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:50.242186789Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:50.242189510Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242192195Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:50.242195554Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:50.242198029Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:50.242200685Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:50.242203183Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242206529Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:50.242208962Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:50.242212571Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242215392Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:50.242218109Z [err]      tr, pr = await connector
+2026-02-17T08:05:50.242221198Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242224082Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:50.242226981Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:50.242229795Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:50.242232366Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:50.242235992Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:50.242238558Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:50.242241692Z [err]  
+2026-02-17T08:05:50.242244362Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:51.331465483Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:51.331470253Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:51.331473906Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:51.331476959Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:51.331479913Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:51.331482933Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:51.331486113Z [err]      return await anext(self.gen)
+2026-02-17T08:05:51.331489413Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331492261Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:51.331495134Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:51.331497828Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:51.331500625Z [err]      return await anext(self.gen)
+2026-02-17T08:05:51.331503391Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331506651Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:51.331509533Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:51.331512280Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:51.331515006Z [err]      return await anext(self.gen)
+2026-02-17T08:05:51.331517920Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331520600Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:51.331524698Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:51.331526866Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:51.331529148Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:51.331535195Z [err]      return await anext(self.gen)
+2026-02-17T08:05:51.331535415Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:51.331539218Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331541340Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331544444Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:51.331546553Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:51.331549069Z [err]      async with conn:
+2026-02-17T08:05:51.331551161Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:51.331555028Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:51.331557270Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331561073Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:51.331562821Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:51.331565679Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331568002Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:51.331570377Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:51.331572865Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331575379Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:51.331579285Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:51.331581059Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:51.331584565Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:51.331586277Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:51.331590074Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331591622Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331594415Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:51.331597152Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:51.331599748Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331602391Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:51.331605181Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:51.331607912Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331610840Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:51.331613907Z [err]      return self.pool.connect()
+2026-02-17T08:05:51.331616655Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331619446Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:51.331622243Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:51.331624984Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331627889Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:51.331630518Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:51.331633581Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331636299Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:51.331638993Z [err]      rec = pool._do_get()
+2026-02-17T08:05:51.331641864Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331644517Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:51.331647109Z [err]      with util.safe_reraise():
+2026-02-17T08:05:51.331649802Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:51.331652417Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:51.331655016Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:51.331658088Z [err]      return self._create_connection()
+2026-02-17T08:05:51.331660837Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331663549Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:51.331666263Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:51.331668788Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.331671726Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:51.331679231Z [err]      self.__connect()
+2026-02-17T08:05:51.331682034Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:51.331684678Z [err]      with util.safe_reraise():
+2026-02-17T08:05:51.331687217Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:51.331690077Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:51.334694203Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:51.334699698Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:51.334702890Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.334706099Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:51.334709123Z [err]      value = await result
+2026-02-17T08:05:51.334713570Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:51.334716298Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:51.334719116Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:51.334721747Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.334724289Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:51.334727144Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:51.334730023Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:51.334733584Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:51.334737733Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.334740248Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:51.334742930Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:51.334745627Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.334748857Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:51.334751517Z [err]      tr, pr = await connector
+2026-02-17T08:05:51.334754617Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.334757292Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:51.334759960Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:51.334762791Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:51.334765470Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:51.334768423Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:51.334771106Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:51.334778193Z [err]  
+2026-02-17T08:05:51.334781315Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:52.443231944Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:52.443236733Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:52.443239557Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:52.443242097Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:52.443244662Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:52.443247122Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:52.443249654Z [err]      return await anext(self.gen)
+2026-02-17T08:05:52.443252349Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.443255018Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:52.443257851Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:52.443260628Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:52.443263940Z [err]      return await anext(self.gen)
+2026-02-17T08:05:52.443266469Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.443269350Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:52.443271993Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:52.443274640Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:52.443277677Z [err]      return await anext(self.gen)
+2026-02-17T08:05:52.443280432Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.443283393Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:52.443286277Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:52.443288952Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:52.445995769Z [err]      return await anext(self.gen)
+2026-02-17T08:05:52.446001342Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446004590Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:52.446007389Z [err]      async with conn:
+2026-02-17T08:05:52.446010578Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:52.446013444Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:52.446016203Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446019091Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:52.446022600Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:52.446026076Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:52.446028844Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:52.446032144Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446034722Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:52.446037898Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:52.446040636Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446043231Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:52.446046096Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:52.446048780Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446051504Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:52.446053933Z [err]      return self.pool.connect()
+2026-02-17T08:05:52.446056624Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446059295Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:52.446061945Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:52.446086668Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446090151Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:52.446092737Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:52.446095575Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446098222Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:52.446101135Z [err]      rec = pool._do_get()
+2026-02-17T08:05:52.446103846Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446108090Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:52.446111548Z [err]      with util.safe_reraise():
+2026-02-17T08:05:52.446114166Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:52.446116987Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:52.446119941Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:52.446122527Z [err]      return self._create_connection()
+2026-02-17T08:05:52.446125084Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446128010Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:52.446130681Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:52.446133741Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446137430Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:52.446140767Z [err]      self.__connect()
+2026-02-17T08:05:52.446143967Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:52.446148008Z [err]      with util.safe_reraise():
+2026-02-17T08:05:52.446151759Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:52.446155042Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:52.446157972Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:52.446161080Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:52.446164225Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446167325Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:52.446170547Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:52.446173883Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446176755Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:52.446179674Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:52.446182286Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446185460Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:52.446189727Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:52.446192387Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446195046Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:52.446198369Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:52.446201378Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446204232Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:52.446206876Z [err]      value = await result
+2026-02-17T08:05:52.446210081Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:52.446212964Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:52.446216579Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:52.446220007Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446222773Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:52.446225611Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:52.446228455Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:52.446231253Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:52.446234766Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446237362Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:52.446240018Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:52.446242723Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446245268Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:52.446247680Z [err]      tr, pr = await connector
+2026-02-17T08:05:52.446250271Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446252814Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:52.446255372Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:52.446258072Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:52.446260653Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:52.446263281Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:52.446266012Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:52.446269110Z [err]  
+2026-02-17T08:05:52.446271543Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:53.057234701Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057239751Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:53.057243323Z [err]      with util.safe_reraise():
+2026-02-17T08:05:53.057246178Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:53.057253045Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:53.057256282Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:53.057259393Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:53.057262388Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:53.057265259Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:53.057268968Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:53.057271948Z [err]      return await anext(self.gen)
+2026-02-17T08:05:53.057274737Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057277802Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:53.057280938Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:53.057283780Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:53.057289438Z [err]      return await anext(self.gen)
+2026-02-17T08:05:53.057292489Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057295552Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:53.057298632Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:53.057301764Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:53.057304672Z [err]      return await anext(self.gen)
+2026-02-17T08:05:53.057308192Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057312354Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:53.057318308Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:53.057318447Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:53.057318673Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:53.057323493Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:53.057328602Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057329564Z [err]      rec = pool._do_get()
+2026-02-17T08:05:53.057331379Z [err]      return await anext(self.gen)
+2026-02-17T08:05:53.057335215Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057338322Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:53.057341382Z [err]      async with conn:
+2026-02-17T08:05:53.057344171Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:53.057349984Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:53.057351683Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:53.057352820Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:53.057358277Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057360855Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057361607Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057366151Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:53.057369052Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:53.057369426Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:53.057373174Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:53.057375368Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:53.057378675Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057381094Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:53.057384449Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:53.057385907Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:53.057389125Z [err]      return self.pool.connect()
+2026-02-17T08:05:53.057390818Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057394287Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.057396493Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:53.057399937Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:53.060399255Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:53.060404475Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:53.060408112Z [err]      return self._create_connection()
+2026-02-17T08:05:53.060411354Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060415989Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:53.060419172Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:53.060422018Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060426527Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:53.060430147Z [err]      self.__connect()
+2026-02-17T08:05:53.060433693Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:53.060437096Z [err]      with util.safe_reraise():
+2026-02-17T08:05:53.060440407Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:53.060443513Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:53.060447062Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:53.060450626Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:53.060453834Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060456886Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:53.060459953Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:53.060463039Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060466009Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:53.060468800Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:53.060472045Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060474833Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:53.060477737Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:53.060480581Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060483369Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:53.060486289Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:53.060488904Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060491508Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:53.060494184Z [err]      value = await result
+2026-02-17T08:05:53.060497033Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:53.060499710Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:53.060502267Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:53.060505035Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060507713Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:53.060511694Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:53.060514241Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:53.060517111Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:53.060519753Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060522149Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:53.060524917Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:53.060527422Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060530162Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:53.060532935Z [err]      tr, pr = await connector
+2026-02-17T08:05:53.060536510Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060540126Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
+2026-02-17T08:05:53.060543211Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:53.060547134Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:53.060550373Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:53.060554054Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:53.060557626Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:53.060560548Z [err]  
+2026-02-17T08:05:53.060563654Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:54.173847866Z [err]  INFO:     Started server process [2]
+2026-02-17T08:05:54.173853997Z [err]  INFO:     Waiting for application startup.
+2026-02-17T08:05:54.173858506Z [err]  ERROR:    Traceback (most recent call last):
+2026-02-17T08:05:54.173861838Z [err]    File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+2026-02-17T08:05:54.173864880Z [err]      async with self.lifespan_context(app) as maybe_state:
+2026-02-17T08:05:54.173867770Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:54.173872108Z [err]      return await anext(self.gen)
+2026-02-17T08:05:54.173876096Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173879328Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:54.173882505Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:54.173887030Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:54.173889728Z [err]      return await anext(self.gen)
+2026-02-17T08:05:54.173892610Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173895998Z [err]    File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 201, in merged_lifespan
+2026-02-17T08:05:54.173898829Z [err]      async with original_context(app) as maybe_original_state:
+2026-02-17T08:05:54.173901564Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:54.173904332Z [err]      return await anext(self.gen)
+2026-02-17T08:05:54.173907027Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173909740Z [err]    File "/app/app/main.py", line 23, in lifespan
+2026-02-17T08:05:54.173913381Z [err]      async with engine.begin() as conn:
+2026-02-17T08:05:54.173916771Z [err]    File "/usr/local/lib/python3.11/contextlib.py", line 210, in __aenter__
+2026-02-17T08:05:54.173919573Z [err]      return await anext(self.gen)
+2026-02-17T08:05:54.173922593Z [err]             ^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173925370Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 1068, in begin
+2026-02-17T08:05:54.173928214Z [err]      async with conn:
+2026-02-17T08:05:54.173930929Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/base.py", line 121, in __aenter__
+2026-02-17T08:05:54.173933560Z [err]      return await self.start(is_ctxmanager=True)
+2026-02-17T08:05:54.173936589Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173940324Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/ext/asyncio/engine.py", line 275, in start
+2026-02-17T08:05:54.173942971Z [err]      await greenlet_spawn(self.sync_engine.connect)
+2026-02-17T08:05:54.173945775Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+2026-02-17T08:05:54.173948706Z [err]      result = context.throw(*sys.exc_info())
+2026-02-17T08:05:54.173951418Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173954289Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3285, in connect
+2026-02-17T08:05:54.173957325Z [err]      return self._connection_cls(self)
+2026-02-17T08:05:54.173959986Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173963151Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 143, in __init__
+2026-02-17T08:05:54.173965862Z [err]      self._dbapi_connection = engine.raw_connection()
+2026-02-17T08:05:54.173968432Z [err]                               ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173971109Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 3309, in raw_connection
+2026-02-17T08:05:54.173973854Z [err]      return self.pool.connect()
+2026-02-17T08:05:54.173976967Z [err]             ^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173979539Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 447, in connect
+2026-02-17T08:05:54.173982467Z [err]      return _ConnectionFairy._checkout(self)
+2026-02-17T08:05:54.173985089Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173988108Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 1264, in _checkout
+2026-02-17T08:05:54.173990703Z [err]      fairy = _ConnectionRecord.checkout(pool)
+2026-02-17T08:05:54.173993306Z [err]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.173996208Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 711, in checkout
+2026-02-17T08:05:54.173998865Z [err]      rec = pool._do_get()
+2026-02-17T08:05:54.174001626Z [err]            ^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174004351Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+2026-02-17T08:05:54.174007203Z [err]      with util.safe_reraise():
+2026-02-17T08:05:54.174010531Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:54.174013271Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:54.174016055Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/impl.py", line 175, in _do_get
+2026-02-17T08:05:54.174018774Z [err]      return self._create_connection()
+2026-02-17T08:05:54.174021886Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174025689Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 388, in _create_connection
+2026-02-17T08:05:54.174028735Z [err]    File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+2026-02-17T08:05:54.174029683Z [err]      return _ConnectionRecord(self)
+2026-02-17T08:05:54.174034914Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174038862Z [err]      tr, pr = await loop.create_connection(
+2026-02-17T08:05:54.174040129Z [err]  ConnectionRefusedError: [Errno 111] Connection refused
+2026-02-17T08:05:54.174043052Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 673, in __init__
+2026-02-17T08:05:54.174048061Z [err]               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174048780Z [err]  
+2026-02-17T08:05:54.174051218Z [err]      self.__connect()
+2026-02-17T08:05:54.174055001Z [err]    File "uvloop/loop.pyx", line 2043, in create_connection
+2026-02-17T08:05:54.174057292Z [err]  ERROR:    Application startup failed. Exiting.
+2026-02-17T08:05:54.174057774Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 899, in __connect
+2026-02-17T08:05:54.174061571Z [err]      with util.safe_reraise():
+2026-02-17T08:05:54.174064530Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 224, in __exit__
+2026-02-17T08:05:54.174067393Z [err]      raise exc_value.with_traceback(exc_tb)
+2026-02-17T08:05:54.174070073Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/pool/base.py", line 895, in __connect
+2026-02-17T08:05:54.174072949Z [err]      self.dbapi_connection = connection = pool._invoke_creator(self)
+2026-02-17T08:05:54.174075873Z [err]                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174079092Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 661, in connect
+2026-02-17T08:05:54.174081840Z [err]      return dialect.connect(*cargs, **cparams)
+2026-02-17T08:05:54.174084635Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174087519Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 630, in connect
+2026-02-17T08:05:54.174090252Z [err]      return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+2026-02-17T08:05:54.174093102Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174096067Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 955, in connect
+2026-02-17T08:05:54.174098630Z [err]      await_only(creator_fn(*arg, **kw)),
+2026-02-17T08:05:54.174101311Z [err]      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174104443Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+2026-02-17T08:05:54.174107072Z [err]      return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+2026-02-17T08:05:54.174109879Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174112592Z [err]    File "/usr/local/lib/python3.11/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+2026-02-17T08:05:54.174115235Z [err]      value = await result
+2026-02-17T08:05:54.174118083Z [err]              ^^^^^^^^^^^^
+2026-02-17T08:05:54.174120787Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connection.py", line 2443, in connect
+2026-02-17T08:05:54.174123412Z [err]      return await connect_utils._connect(
+2026-02-17T08:05:54.174126064Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174128793Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1249, in _connect
+2026-02-17T08:05:54.174131274Z [err]      raise last_error or exceptions.TargetServerAttributeNotMatched(
+2026-02-17T08:05:54.174134116Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1218, in _connect
+2026-02-17T08:05:54.174136954Z [err]      conn = await _connect_addr(
+2026-02-17T08:05:54.174139575Z [err]             ^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174142429Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1054, in _connect_addr
+2026-02-17T08:05:54.174145244Z [err]      return await __connect_addr(params, True, *args)
+2026-02-17T08:05:54.174147814Z [err]             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174151160Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 1099, in __connect_addr
+2026-02-17T08:05:54.174153893Z [err]      tr, pr = await connector
+2026-02-17T08:05:54.174156658Z [err]               ^^^^^^^^^^^^^^^
+2026-02-17T08:05:54.174160959Z [err]    File "/usr/local/lib/python3.11/site-packages/asyncpg/connect_utils.py", line 969, in _create_ssl_connection
