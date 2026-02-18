@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from typing import List
 from app.modules.compliance.schemas import (
     ComplianceReport, ChecklistItem, SiteContentExtraction,
+    DynamicChecklistRule, DynamicExtractionResult
 )
 from app.services.llm.factory import LLMFactory
 from app.core.config import settings
@@ -194,6 +195,93 @@ class ComplianceRuleEngine:
             status=status,
             checklist=checklist,
             summary=summary,
+            generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
+        )
+
+    async def analyze_dynamic(self, clean_text: str, rules: List[DynamicChecklistRule]) -> ComplianceReport:
+        """
+        Analyze site using a dynamic set of rules (e.g. from uploaded checklist).
+        """
+        if not rules:
+            return ComplianceReport(score=0, status="NEEDS_REVIEW", summary="No rules provided.")
+
+        # 1. Build Dynamic Prompt
+        system_prompt = (
+            "You are a compliance checking agent. "
+            "Your goal is to extract specific information from the website text based on a list of rules.\n"
+            "For each rule ID, extract the relevant content found on the page.\n"
+            "If information is NOT found, return 'Not found'.\n"
+            "Be strict and factual.\n\n"
+            "RULES TO CHECK:\n"
+        )
+        
+        for r in rules:
+            system_prompt += f"- {r.rule_id} ({r.item}): {r.extraction_prompt}\n"
+
+        # 2. Extract
+        try:
+            extracted: DynamicExtractionResult = await self.llm_client.extract_data(
+                text=clean_text[:50000],
+                schema=DynamicExtractionResult,
+                system_prompt=system_prompt,
+            )
+        except Exception as e:
+            logger.error(f"Dynamic extraction failed: {e}")
+            # Fallback empty result
+            extracted = DynamicExtractionResult(results={})
+
+        # 3. Evaluate & Build Checklist
+        checklist: List[ChecklistItem] = []
+        passed_count = 0
+        total_count = 0
+
+        for r in rules:
+            val = extracted.results.get(r.rule_id, "Not found")
+            is_pass = False
+            
+            # Simple evaluation logic
+            condition = r.pass_condition.lower()
+            val_lower = str(val).lower().strip()
+            
+            if val_lower in ["not found", "none", "", "null"]:
+                is_pass = False
+            elif condition == "not_empty":
+                is_pass = True
+            elif condition == "true":
+                is_pass = val_lower in ["true", "yes", "found", "present"]
+            elif "contains" in condition:
+                # e.g. "contains(privacy)"
+                target = condition.replace("contains(", "").replace(")", "").strip()
+                is_pass = target in val_lower
+            else:
+                # Default fallback: if we found something not "Not found", it passes
+                is_pass = True
+
+            status = "pass" if is_pass else r.severity
+            if status != "info":
+                total_count += 1
+                if status == "pass":
+                    passed_count += 1
+            
+            checklist.append(ChecklistItem(
+                section=r.section,
+                item=r.item,
+                rule_id=r.rule_id,
+                status=status,
+                found_value=str(val)[:100], # Truncate for display
+                recommendation=None if is_pass else r.description
+            ))
+
+        # 4. Report
+        score = int((passed_count / total_count) * 100) if total_count > 0 else 0
+        status = "COMPLIANT" if score == 100 else "NON-COMPLIANT"
+        
+        return ComplianceReport(
+            company_name="Dynamic Check", # We might need a separate rule to extract company name specifically
+            score=score,
+            status=status,
+            checklist=checklist,
+            summary=f"Dynamic check: {passed_count}/{total_count} rules passed.",
             generated_at=datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
         )
 

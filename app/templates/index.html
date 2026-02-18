@@ -17,13 +17,20 @@
 
         h1 {
             color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 40px;
-            margin-top: 40px;
+        }
+
+        @media (min-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         .card {
@@ -31,6 +38,7 @@
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: fit-content;
         }
 
         .btn {
@@ -42,7 +50,8 @@
             cursor: pointer;
             font-size: 16px;
             width: 100%;
-            transition: background 0.3s;
+            transition: background 0.2s;
+            font-weight: 500;
         }
 
         .btn:hover {
@@ -54,26 +63,251 @@
             cursor: not-allowed;
         }
 
-        input {
+        .btn-outline {
+            background: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+        }
+
+        .btn-outline:hover {
+            background: #f0f8ff;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 14px;
+            width: auto;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        input,
+        select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 6px;
             margin-bottom: 20px;
             box-sizing: border-box;
+            font-size: 15px;
         }
 
         label {
-            font-weight: bold;
+            font-weight: 600;
             display: block;
             margin-bottom: 8px;
+            color: #555;
         }
 
         .spinner {
             display: none;
-            margin-top: 10px;
+            margin-top: 15px;
             text-align: center;
             color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #7f8c8d;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab.active {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Results Area */
+        #resultsArea {
+            display: none;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .score-box {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .status-pass {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-warn {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .checklist-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .checklist-table th,
+        .checklist-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checklist-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .badge-pass {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge-warn {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-info {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+            font-family: inherit;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            text-align: right;
+            background: #f8f9fa;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        /* Generated Content Styling */
+        .generated-content h2 {
+            font-size: 20px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .generated-content ul {
+            padding-left: 20px;
+        }
+
+        /* Rules Preview */
+        .rules-preview {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 13px;
+            border: 1px solid #eee;
+        }
+
+        .rule-item {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
         }
     </style>
 </head>
@@ -85,77 +319,479 @@
         <!-- Feature 1: Compliance Check -->
         <div class="card">
             <h2>🔍 Site Readiness Check</h2>
-            <p>Analyze any website for compliance gaps (Privacy Policy, ToS, etc.) using AI.</p>
+            <p>Analyze any website using standard or custom compliance protocols.</p>
 
-            <form id="checkForm">
-                <label>Company/Site Name</label>
-                <input type="text" id="companyName" placeholder="e.g. My Startup" required>
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('standard')">Standard Checklist</div>
+                <div class="tab" onclick="switchTab('custom')">Upload Custom Checklist</div>
+            </div>
 
-                <label>Website URL</label>
-                <input type="url" id="siteUrl" placeholder="https://example.com" required>
+            <!-- Standard Tab -->
+            <div id="tab-standard" class="tab-content active">
+                <form id="checkFormStandard">
+                    <label>Company Name</label>
+                    <input type="text" id="companyNameStd" placeholder="e.g. My Startup" required>
 
-                <button type="submit" class="btn">Generate Report (DOCX)</button>
-                <div class="spinner" id="spinner">Analyzing site... (this may take 10-20s)</div>
-            </form>
+                    <label>Website URL</label>
+                    <input type="url" id="siteUrlStd" placeholder="https://example.com" required>
+
+                    <button type="submit" class="btn" id="analyzeBtnStd">Analyze (Standard)</button>
+                </form>
+            </div>
+
+            <!-- Custom Tab -->
+            <div id="tab-custom" class="tab-content">
+                <div id="uploadSection">
+                    <label>Upload Checklist (PDF, DOCX, TXT)</label>
+                    <input type="file" id="checklistFile" accept=".pdf,.docx,.txt">
+                    <button class="btn btn-secondary" id="parseBtn" onclick="parseChecklist()">1. Upload & Parse
+                        Rules</button>
+                </div>
+
+                <div id="parsedRulesSection" style="display:none; margin-top:20px;">
+                    <label>Parsed Rules Preview:</label>
+                    <div class="rules-preview" id="rulesList"></div>
+
+                    <label>Company Name</label>
+                    <input type="text" id="companyNameCustom" placeholder="e.g. My Startup">
+
+                    <label>Website URL</label>
+                    <input type="url" id="siteUrlCustom" placeholder="https://example.com">
+
+                    <button class="btn" id="analyzeBtnCustom" onclick="analyzeCustom()">2. Analyze with Custom
+                        Rules</button>
+                </div>
+
+                <div class="spinner" id="spinnerCustom">Parsing checklist...</div>
+            </div>
+
+            <!-- Shared Results Area -->
+            <div id="resultsArea">
+                <div id="scoreBox" class="score-box"></div>
+
+                <h3 style="margin-top:0">Compliance Report</h3>
+                <div style="max-height: 400px; overflow-y: auto; border: 1px solid #eee; border-radius: 6px;">
+                    <table class="checklist-table" id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 20px; display: flex; gap: 10px;" id="downloadArea">
+                    <button class="btn btn-outline" id="downloadReportBtn" onclick="downloadReport()">Download Report
+                        (DOCX)</button>
+                </div>
+            </div>
+            <div class="spinner" id="spinnerAnalyze">Analyzing site... (10-20s)</div>
         </div>
 
         <!-- Feature 2: Policy Widget -->
         <div class="card">
             <h2>🛡️ Dynamic Policy Widget</h2>
-            <p>Below is a live example of the Shadow DOM widget embedded on a client's site.</p>
-            <div style="background: #f0f2f5; padding: 20px; border-radius: 8px; border: 2px dashed #ccc;">
-                <!-- Widget Embed Code -->
-                <h3>Client Website Footer</h3>
-                <p>Embed code:</p>
-                <code>&lt;script src="/static/js/widget.js" ...&gt;&lt;/script&gt;</code>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+            <p>Generate a secure, domain-locked policy widget for your site.</p>
 
-                <!-- The Widget Container -->
-                <script src="/static/js/widget.js" data-client-id="demo-client-123" data-api-base=""></script>
+            <form id="widgetForm" onsubmit="event.preventDefault(); createWidget();">
+                <label>Client ID (Merchant ID)</label>
+                <input type="text" id="widgetClientId" placeholder="merchant_123" required>
+
+                <label>Authorized Domain</label>
+                <input type="text" id="widgetDomain" placeholder="example.com" required>
+
+                <button type="submit" class="btn" id="createWidgetBtn">Generate Widget Code</button>
+            </form>
+
+            <div id="widgetResult" style="display:none; margin-top:20px;">
+                <div style="background: #f0f2f5; padding: 15px; border-radius: 8px; border: 1px solid #ddd;">
+                    <label>Your Embed Code:</label>
+                    <code id="embedCode"
+                        style="display:block; background: #eee; padding: 10px; border-radius: 4px; font-size: 13px; word-break: break-all;"></code>
+                </div>
+
+                <h3 style="margin-top:20px;">Preview:</h3>
+                <div style="padding: 20px; border: 2px dashed #ccc; border-radius: 8px; text-align: center;">
+                    <p style="color:#888; margin-bottom:10px;">Widget will appear below:</p>
+                    <div id="widgetPreviewContainer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Policy Preview Modal -->
+    <div class="modal-overlay" id="policyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle" style="margin:0">Generated Policy</h3>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body generated-content" id="modalContent">
+                <!-- Content goes here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn" style="width: auto;" onclick="downloadPolicy()">Download HTML</button>
             </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('checkForm').addEventListener('submit', async (e) => {
+        const API_BASE = '/api/compliance';
+        const WIDGET_API_BASE = '/api/widget'; // Base for widget API calls
+        let parsedRules = null; // Store parsed custom rules
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            if (tab === 'standard') {
+                document.querySelector('.tab:nth-child(1)').classList.add('active');
+                document.getElementById('tab-standard').classList.add('active');
+            } else {
+                document.querySelector('.tab:nth-child(2)').classList.add('active');
+                document.getElementById('tab-custom').classList.add('active');
+            }
+            document.getElementById('resultsArea').style.display = 'none';
+        }
+
+        // --- Standard Check ---
+        document.getElementById('checkFormStandard').addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const spinner = document.getElementById('spinner');
+            await runAnalysis(
+                document.getElementById('siteUrlStd').value,
+                document.getElementById('companyNameStd').value,
+                null
+            );
+        });
+
+        // --- Custom Check: Parse ---
+        async function parseChecklist() {
+            const fileInput = document.getElementById('checklistFile');
+            const btn = document.getElementById('parseBtn');
+            const spinner = document.getElementById('spinnerCustom');
+
+            if (!fileInput.files[0]) {
+                alert("Please select a file first.");
+                return;
+            }
 
             btn.disabled = true;
             spinner.style.display = 'block';
+            spinner.textContent = "Parsing rules from file... (might take 10s)";
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
 
             try {
-                const response = await fetch('/api/compliance/check', {
+                const res = await fetch(`${API_BASE}/upload-checklist`, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        url: document.getElementById('siteUrl').value,
-                        company_name: document.getElementById('companyName').value
-                    })
+                    body: formData
                 });
 
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error('Analysis failed: ' + errorText);
-                }
+                if (!res.ok) throw new Error(await res.text());
 
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
+                const data = await res.json();
+                parsedRules = data.rules; // Store rules
 
-                // Create link to trigger download forcedly for DOCX
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `compliance_report_${document.getElementById('companyName').value}.docx`;
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-            } catch (err) {
-                alert('Error: ' + err.message);
+                // Show preview
+                const list = document.getElementById('rulesList');
+                list.innerHTML = parsedRules.map(r =>
+                    `<div class="rule-item"><b>${r.rule_id}</b>: [${r.section}] ${r.item}</div>`
+                ).join('');
+
+                document.getElementById('parsedRulesSection').style.display = 'block';
+                document.getElementById('uploadSection').style.display = 'none';
+
+            } catch (e) {
+                alert("Parse failed: " + e.message);
             } finally {
                 btn.disabled = false;
                 spinner.style.display = 'none';
             }
+        }
+
+        // --- Custom Check: Analyze ---
+        async function analyzeCustom() {
+            if (!parsedRules) return;
+            await runAnalysis(
+                document.getElementById('siteUrlCustom').value,
+                document.getElementById('companyNameCustom').value,
+                parsedRules
+            );
+        }
+
+        // --- Core Analysis Logic ---
+        async function runAnalysis(url, company, rules) {
+            if (!url || !company) {
+                alert("Please enter URL and Company Name.");
+                return;
+            }
+
+            const spinner = document.getElementById('spinnerAnalyze');
+            const resultsArea = document.getElementById('resultsArea');
+
+            spinner.style.display = 'block';
+            resultsArea.style.display = 'none';
+
+            // Disable buttons
+            document.querySelectorAll('button').forEach(b => b.disabled = true);
+
+            try {
+                const payload = {
+                    url: url,
+                    company_name: company,
+                    custom_rules: rules // null for standard, list for custom
+                };
+
+                const response = await fetch(`${API_BASE}/check-json`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) throw new Error(await response.text());
+
+                const report = await response.json();
+                renderResults(report);
+                resultsArea.style.display = 'block';
+
+            } catch (err) {
+                alert('Analysis Error: ' + err.message);
+            } finally {
+                spinner.style.display = 'none';
+                document.querySelectorAll('button').forEach(b => b.disabled = false);
+            }
+        }
+
+        // --- Widget Creation ---
+        async function createWidget() {
+            const clientId = document.getElementById('widgetClientId').value;
+            const domain = document.getElementById('widgetDomain').value;
+            const btn = document.getElementById('createWidgetBtn');
+
+            if (!clientId || !domain) {
+                alert("Please fill in Client ID and Domain");
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = "Generating...";
+
+            try {
+                const response = await fetch(`${WIDGET_API_BASE}/create`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ client_id: clientId, domain: domain })
+                });
+
+                if (!response.ok) throw new Error("Failed to create widget");
+
+                const data = await response.json();
+                const token = data.token;
+
+                // Show result
+                const host = window.location.origin;
+                const scriptTag = `<script src="${host}/api/widget/${token}/policies.js"><\/script>`;
+                document.getElementById('embedCode').textContent = scriptTag;
+
+                // Inject preview
+                const container = document.getElementById('widgetPreviewContainer');
+                container.innerHTML = ''; // clear
+
+                const script = document.createElement('script');
+                script.src = `${host}/api/widget/${token}/policies.js`;
+                container.appendChild(script);
+
+                document.getElementById('widgetResult').style.display = 'block';
+
+            } catch (e) {
+                alert("Error: " + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Generate Widget Code";
+            }
+        }
+
+
+        // --- Shared Rendering Logic ---
+        const POLICY_MAPPING = {
+            'privacy': 'privacy', 'terms': 'terms', 'refund': 'refund', 'cancel': 'cancellation'
+        };
+
+        function renderResults(report) {
+            // Score
+            const scoreBox = document.getElementById('scoreBox');
+            scoreBox.textContent = `Score: ${report.score}/100 — ${report.status}`;
+            scoreBox.className = 'score-box ' + (
+                report.status === 'COMPLIANT' ? 'status-pass' :
+                    report.status === 'NON-COMPLIANT' ? 'status-fail' : 'status-warn'
+            );
+
+            // Table
+            const tbody = document.querySelector('#resultsTable tbody');
+            tbody.innerHTML = '';
+
+            (report.checklist || []).forEach(item => {
+                const tr = document.createElement('tr');
+
+                let badgeClass = 'badge-info';
+                let icon = 'ℹ️';
+                if (item.status === 'pass') { badgeClass = 'badge-pass'; icon = '✅'; }
+                else if (item.status === 'fail') { badgeClass = 'badge-fail'; icon = '❌'; }
+                else if (item.status === 'warning') { badgeClass = 'badge-warn'; icon = '⚠️'; }
+
+                // Generate Button Logic
+                let actionHtml = '';
+                if (item.status === 'fail') {
+                    const lowerItem = item.item.toLowerCase();
+                    let type = null;
+                    if (lowerItem.includes('privacy')) type = 'privacy';
+                    else if (lowerItem.includes('terms')) type = 'terms';
+                    else if (lowerItem.includes('refund') || lowerItem.includes('return')) type = 'refund';
+                    else if (lowerItem.includes('cancel')) type = 'cancellation';
+
+                    if (type) {
+                        actionHtml = `<button class="btn btn-sm btn-outline" 
+                            onclick="generatePolicy('${type}')">✨ Generate</button>`;
+                    }
+                }
+
+                tr.innerHTML = `
+                    <td>
+                        <div style="font-weight:500;">${item.item}</div>
+                        <div style="font-size:12px; color:#666;">${item.section}</div>
+                        <div style="font-size:11px; color:#888;">Rule: ${item.rule_id}</div>
+                    </td>
+                    <td><span class="badge ${badgeClass}">${icon} ${item.status.toUpperCase()}</span></td>
+                    <td>${actionHtml}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // --- Policy Generation & Modal (Same as before) ---
+        async function generatePolicy(type) {
+            // reused logic...
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = "⏳ Generating...";
+            btn.disabled = true;
+
+            try {
+                // Get URL/Company from active tab inputs
+                const activeTab = document.querySelector('.tab-content.active').id;
+                let url, company;
+                if (activeTab === 'tab-standard') {
+                    url = document.getElementById('siteUrlStd').value;
+                    company = document.getElementById('companyNameStd').value;
+                } else {
+                    url = document.getElementById('siteUrlCustom').value;
+                    company = document.getElementById('companyNameCustom').value;
+                }
+
+                const response = await fetch(`${API_BASE}/generate-policy`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        policy_type: type,
+                        url: url,
+                        company_name: company
+                    })
+                });
+
+                if (!response.ok) throw new Error('Generation failed');
+
+                const data = await response.json();
+                openModal(type, data.html);
+
+            } catch (e) {
+                alert("Error: " + e.message);
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        let currentPolicyHtml = "";
+        let currentPolicyTitle = "";
+
+        function openModal(type, html) {
+            const modal = document.getElementById('policyModal');
+            const titleMap = {
+                'privacy': 'Privacy Policy', 'terms': 'Terms & Conditions',
+                'refund': 'Refund Policy', 'cancellation': 'Cancellation Policy'
+            };
+            currentPolicyTitle = titleMap[type] || 'Generated Policy';
+            currentPolicyHtml = html;
+
+            document.getElementById('modalTitle').textContent = currentPolicyTitle;
+            document.getElementById('modalContent').innerHTML = html;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('policyModal').style.display = 'none';
+        }
+
+        function downloadPolicy() {
+            const blob = new Blob([currentPolicyHtml], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentPolicyTitle.replace(/\s+/g, '_')}.html`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }
+
+        async function downloadReport() {
+            const btn = document.getElementById('downloadReportBtn');
+            // Re-use logic...
+            // Get URL/Company from active tab inputs
+            const activeTab = document.querySelector('.tab-content.active').id;
+            let url, company;
+            if (activeTab === 'tab-standard') {
+                url = document.getElementById('siteUrlStd').value;
+                company = document.getElementById('companyNameStd').value;
+            } else {
+                url = document.getElementById('siteUrlCustom').value;
+                company = document.getElementById('companyNameCustom').value;
+            }
+
+            const btnText = btn.textContent;
+            btn.textContent = "Downloading...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(`${API_BASE}/check`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: url, company_name: company })
+                });
+                if (!response.ok) throw new Error('Download failed');
+                const blob = await response.blob();
+                const bUrl = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = bUrl;
+                link.download = `report.docx`;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            } catch (e) {
+                alert("Download failed: " + e.message);
+            } finally {
+                btn.textContent = btnText;
+                btn.disabled = false;
+            }
+        }
+
+
+        // Close modal on outside click
+        document.getElementById('policyModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeModal();
         });
     </script>
 </body>

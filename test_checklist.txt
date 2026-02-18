@@ -1,0 +1,11 @@
+ECOMMBX Compliance Checklist
+
+SECTION 1: Company Info
+1. Legal Name: The full legal name of the company must be visible.
+2. Reg Number: Company registration number must be present.
+3. Address: Registered legal address must be shown.
+
+SECTION 2: Policies
+4. Privacy Policy: Must have a privacy policy link.
+5. Refund Policy: Must describe refund conditions.
+6. Terms: Terms and Conditions must be present.

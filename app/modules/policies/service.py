@@ -1,57 +1,58 @@
+"""
+Legacy Policy Service — kept for backward compatibility with /api/widget/content/{client_id}.
+New functionality uses V1 API endpoints and PolicyGenerator.
+"""
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from jinja2 import Environment, select_autoescape
-from jinja2.sandbox import SandboxedEnvironment
-import json
 import logging
 
-from app.modules.policies.models import PolicyTemplate, ClientWidget
-from app.modules.policies.schemas import PolicyTemplateCreate, WidgetResponse
+from app.modules.policies.models import Widget, ClientPolicy
+from app.modules.policies.schemas import WidgetResponse
+from app.modules.policies.generator import POLICY_TYPES
 
 logger = logging.getLogger(__name__)
-
-# Use SandboxedEnvironment to prevent SSTI attacks from DB templates
-_jinja_env = SandboxedEnvironment(autoescape=select_autoescape(["html"]))
 
 
 class PolicyService:
     def __init__(self, db: AsyncSession):
         self.db = db
 
-    async def create_template(self, data: PolicyTemplateCreate) -> PolicyTemplate:
-        template = PolicyTemplate(**data.model_dump())
-        self.db.add(template)
-        await self.db.commit()
-        await self.db.refresh(template)
-        return template
-
     async def get_widget_content(self, client_id: str) -> WidgetResponse:
-        # Fetch client config and template
-        stmt = select(ClientWidget).where(ClientWidget.id == client_id)
+        """Legacy: return widget HTML for a client. Uses new models."""
+        # Find widget by client_id
+        stmt = select(Widget).where(Widget.client_id == client_id, Widget.is_active == True)
         result = await self.db.execute(stmt)
         widget = result.scalar_one_or_none()
 
         if not widget:
             raise ValueError("Widget not found")
 
-        template = await self.db.get(PolicyTemplate, widget.policy_template_id)
+        # Fetch approved policies
+        stmt = select(ClientPolicy).where(
+            ClientPolicy.client_id == client_id,
+            ClientPolicy.status == "approved",
+        )
+        result = await self.db.execute(stmt)
+        policies = result.scalars().all()
 
-        # Parse config for variable injection
-        context = json.loads(widget.config_json)
+        if not policies:
+            raise ValueError("No approved policies found")
 
-        # Render HTML using sandboxed Jinja2 (prevents SSTI)
-        jinja_template = _jinja_env.from_string(template.content_template)
-        html_content = jinja_template.render(**context)
+        # Build HTML from approved policies
+        html_parts = []
+        for p in policies:
+            name = POLICY_TYPES.get(p.policy_type, p.policy_type)
+            html_parts.append(f"<h2>{name}</h2>\n{p.content_html}")
 
-        # Generate JSON-LD (simplified example)
+        html_content = "\n<hr>\n".join(html_parts)
+
         json_ld = {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": template.name,
-            "url": f"https://{widget.domain}/policies/{template.slug}",
+            "name": "Compliance Policies",
             "publisher": {
                 "@type": "Organization",
-                "name": context.get("company_name", "Organization"),
+                "name": client_id,
             },
         }
 

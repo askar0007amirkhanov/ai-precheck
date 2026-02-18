@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str | None = None
     GEMINI_API_KEY: str | None = None
 
+    # API Authentication (server-to-server with portal)
+    API_SECRET_KEY: str = "dev-secret-key-change-in-production"
+
     # CORS
     ALLOWED_ORIGINS: str = "http://localhost:8000,http://127.0.0.1:8000"
 

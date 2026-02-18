@@ -161,3 +161,34 @@ class ComplianceReport(BaseModel):
         default="", description="Brief text summary of findings"
     )
     generated_at: str = ""
+
+
+# --- Dynamic Rules (from uploaded checklist) ---
+
+class DynamicChecklistRule(BaseModel):
+    """A single compliance rule parsed from an uploaded file."""
+    rule_id: str = Field(description="Unique ID, e.g. 'DYN-001'")
+    section: str = Field(description="Section name, e.g. 'Company Info'")
+    item: str = Field(description="Short name of the check")
+    description: str = Field(description="Detailed description of what to check")
+    extraction_prompt: str = Field(description="Specific instruction for AI to extract this data")
+    pass_condition: str = Field(
+        description="Logic to evaluate: 'not_empty', 'true', 'contains(text)', 'equals(text)'",
+        default="not_empty"
+    )
+    severity: Literal["fail", "warning", "info"] = Field(default="fail")
+
+
+class DynamicChecklist(BaseModel):
+    """Container for a full set of dynamic rules."""
+    name: str = "Custom Checklist"
+    rules: List[DynamicChecklistRule]
+
+
+class DynamicExtractionResult(BaseModel):
+    """Generic bucket for extraction results from dynamic rules."""
+    # Maps rule_id -> found value (e.g. {"DYN-001": "My Corp Ltd", "DYN-002": "Not found"})
+    results: dict[str, str] = Field(
+        default_factory=dict,
+        description="Map of rule_id to the extracted text or value found on the page."
+    )
