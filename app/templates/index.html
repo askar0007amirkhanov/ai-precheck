@@ -321,6 +321,16 @@
             <h2>🔍 Site Readiness Check</h2>
             <p>Analyze any website using standard or custom compliance protocols.</p>
 
+            <div style="margin-bottom: 15px;">
+                <label style="font-weight: 600; margin-bottom: 6px; display: block;">🤖 AI Model</label>
+                <select id="aiModelSelect"
+                    style="width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: #f8f9fa; cursor: pointer;">
+                    <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (fast, recommended)</option>
+                    <option value="gemini-2.5-pro">Gemini 2.5 Pro (accurate, slower)</option>
+                    <option value="gemini-2.0-flash">Gemini 2.0 Flash (legacy)</option>
+                </select>
+            </div>
+
             <div class="tabs">
                 <div class="tab active" onclick="switchTab('standard')">Standard Checklist</div>
                 <div class="tab" onclick="switchTab('custom')">Upload Custom Checklist</div>
@@ -543,7 +553,8 @@
                 const payload = {
                     url: url,
                     company_name: company,
-                    custom_rules: rules // null for standard, list for custom
+                    custom_rules: rules, // null for standard, list for custom
+                    model: document.getElementById('aiModelSelect').value
                 };
 
                 const response = await fetch(`${API_BASE}/check-json`, {

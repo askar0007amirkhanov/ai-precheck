@@ -21,6 +21,7 @@ class ComplianceRequest(BaseModel):
     url: HttpUrl
     company_name: str
     custom_rules: Optional[List[DynamicChecklistRule]] = None
+    model: Optional[str] = None  # e.g. 'gemini-2.5-flash', 'gemini-2.5-pro'
 
 
 @router.post("/check", summary="Run full compliance check")
@@ -28,7 +29,7 @@ async def run_compliance_check(request: ComplianceRequest):
     logger.info("Compliance check requested for '%s' (%s)", request.company_name, request.url)
 
     crawler = CrawlerService()
-    engine = ComplianceRuleEngine()
+    engine = ComplianceRuleEngine(model=request.model)
     docx_service = DocxService()
 
     # 1. Crawl
@@ -80,7 +81,7 @@ async def run_compliance_check_json(request: ComplianceRequest):
     logger.info("JSON Compliance check requested for '%s' (%s)", request.company_name, request.url)
 
     crawler = CrawlerService()
-    engine = ComplianceRuleEngine()
+    engine = ComplianceRuleEngine(model=request.model)
 
     # 1. Crawl
     try:

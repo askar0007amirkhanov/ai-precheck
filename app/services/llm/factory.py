@@ -10,17 +10,21 @@ class LLMFactory:
     _instances: dict[str, LLMClient] = {}
 
     @classmethod
-    def get_client(cls, provider: str = None) -> LLMClient:
+    def get_client(cls, provider: str = None, model: str = None) -> LLMClient:
         """
         Get or create an LLM client instance.
 
         :param provider: 'openai', 'gemini', or 'mock'
+        :param model: Optional model name (e.g. 'gemini-2.5-flash', 'gemini-2.5-pro')
         :return: Instance of LLMClient
         """
         provider = provider or settings.LLM_PROVIDER
 
-        if provider in cls._instances:
-            return cls._instances[provider]
+        # Cache key includes model for provider-specific model selection
+        cache_key = f"{provider}:{model}" if model else provider
+
+        if cache_key in cls._instances:
+            return cls._instances[cache_key]
 
         client: Optional[LLMClient] = None
 
@@ -39,10 +43,15 @@ class LLMFactory:
             if not settings.GEMINI_API_KEY:
                 raise ValueError("GEMINI_API_KEY is not set. Use LLM_PROVIDER=mock for demo mode.")
             from app.services.llm.gemini_client import GeminiClient
-            client = GeminiClient()
+            if model:
+                logger.info("Creating GeminiClient with model: %s", model)
+                client = GeminiClient(model=model)
+            else:
+                client = GeminiClient()
 
         else:
             raise ValueError(f"Unsupported LLM provider: {provider}. Use 'openai', 'gemini', or 'mock'.")
 
-        cls._instances[provider] = client
+        cls._instances[cache_key] = client
         return client
+

@@ -24,9 +24,9 @@ SECTION_WEIGHTS = {
 
 
 class ComplianceRuleEngine:
-    def __init__(self, llm_provider: str = None):
+    def __init__(self, llm_provider: str = None, model: str = None):
         self.provider = llm_provider or settings.LLM_PROVIDER
-        self.llm_client = LLMFactory.get_client(self.provider)
+        self.llm_client = LLMFactory.get_client(self.provider, model=model)
 
     async def analyze_site(self, clean_text: str) -> ComplianceReport:
         """

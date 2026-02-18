@@ -14,13 +14,14 @@ AI Compliance Agent crawls merchant websites, uses **Gemini AI** to extract regu
 | Feature | Description |
 |---------|-------------|
 | **30+ Compliance Checks** | 8 sections: Company Info, Contacts, Policies, Product Description, Checkout, Receipt, Updates, Mobile |
+| **Custom Checklist Upload** | Upload PDF/DOCX/TXT checklists → AI parses into rules → analyze site against custom rules |
 | **Weighted Scoring** | 0–100 score with section weights; status: COMPLIANT / NEEDS_REVIEW / NON-COMPLIANT |
 | **DOCX Report** | Professional document with per-section tables, color-coded statuses (✅❌⚠️ℹ️), found values, recommendations |
 | **Policy Generator** | Auto-generates missing policies (Terms, Privacy, Refund, Cancellation, Payment) via Gemini AI |
 | **Jurisdiction Support** | EU/GDPR, UK, Cyprus, US, General — jurisdiction-specific clauses |
-| **Widget** | JS snippet for merchants to embed policies on their site |
+| **Widget** | JS snippet for merchants to embed policies on their site; generate tokens via UI or API |
 | **API v1** | Authenticated API with rate limiting for portal integration |
-| **Web UI** | Simple form at `/` for manual checks (no auth, no limit) |
+| **Web UI** | Tabbed interface at `/` — Standard Checklist, Custom Checklist Upload, Widget Generator |
 
 ---
 
@@ -56,7 +57,9 @@ portal.nbcgate.com (Next.js)
 - **ORM**: SQLAlchemy 2.0 (async)
 - **Crawler**: Playwright (headless Chromium)
 - **Reports**: python-docx
+- **File Parsing**: pypdf (PDF), python-docx (DOCX)
 - **Auth**: Bearer token (API key)
+- **Form Data**: python-multipart (file uploads)
 
 ---
 
@@ -250,6 +253,28 @@ Delete a policy.
 
 ### Widget (Public — No Auth)
 
+#### Create Widget Token
+
+##### `POST /api/widget/create`
+
+Generate or retrieve a widget token for a client.
+
+**Request:**
+```json
+{
+  "client_id": "merchant_123",
+  "domain": "merchant.com"
+}
+```
+
+**Response:**
+```json
+{
+  "token": "a1b2c3d4-e5f6-...",
+  "client_id": "merchant_123"
+}
+```
+
 #### Embed on Merchant Site
 
 Add this script tag to the merchant's website:
@@ -267,17 +292,18 @@ The widget:
 
 | Endpoint | Description |
 |----------|-------------|
+| `POST /api/widget/create` | Create widget token (client_id + domain) |
 | `GET /api/widget/{token}/policies.js` | JavaScript widget script |
 | `GET /api/widget/{token}/policies` | JSON list of approved policies |
 | `GET /api/widget/{token}/policy/{type}` | Standalone HTML page for a policy |
 
 ---
 
-### Web Form (Legacy — No Auth)
+### Web Form (No Auth)
 
 #### `POST /api/compliance/check`
 
-Run a compliance check via the web form. No rate limiting.
+Run a compliance check and download DOCX report.
 
 **Request:**
 ```json
@@ -288,6 +314,90 @@ Run a compliance check via the web form. No rate limiting.
 ```
 
 **Response:** DOCX file download.
+
+---
+
+#### `POST /api/compliance/check-json`
+
+Run a compliance check and return JSON results. Supports optional custom rules.
+
+**Request:**
+```json
+{
+  "url": "https://merchant-site.com",
+  "company_name": "Merchant Ltd",
+  "custom_rules": null
+}
+```
+
+With custom rules (from `/upload-checklist`):
+```json
+{
+  "url": "https://merchant-site.com",
+  "company_name": "Merchant Ltd",
+  "custom_rules": [
+    {
+      "rule_id": "SEC-01",
+      "section": "Security",
+      "item": "SSL Certificate",
+      "description": "Site must use HTTPS",
+      "extraction_prompt": "Check if the site uses HTTPS",
+      "pass_condition": "not_empty",
+      "severity": "fail"
+    }
+  ]
+}
+```
+
+**Response:** JSON `ComplianceReport` with `score`, `status`, `checklist`.
+
+---
+
+#### `POST /api/compliance/upload-checklist`
+
+Upload a checklist file (PDF, DOCX, or TXT). The system parses it into structured rules using Gemini AI.
+
+**Request:** `multipart/form-data` with `file` field.
+
+**Response:**
+```json
+{
+  "name": "checklist.pdf",
+  "rules": [
+    {
+      "rule_id": "SEC-01",
+      "section": "Security",
+      "item": "SSL Certificate",
+      "description": "Site must use HTTPS",
+      "extraction_prompt": "Check if the site uses HTTPS",
+      "pass_condition": "not_empty",
+      "severity": "fail"
+    }
+  ]
+}
+```
+
+---
+
+#### `POST /api/compliance/generate-policy`
+
+Generate a single policy (public demo, no auth required).
+
+**Request:**
+```json
+{
+  "policy_type": "privacy",
+  "company_name": "Merchant Ltd",
+  "url": "https://merchant.com"
+}
+```
+
+**Response:**
+```json
+{
+  "html": "<h2>Privacy Policy</h2><p>...</p>"
+}
+```
 
 ---
 
@@ -349,8 +459,9 @@ app/
 │   └── database.py               # SQLAlchemy async engine
 ├── modules/
 │   ├── compliance/
-│   │   ├── engine.py             # 30+ deterministic rules
-│   │   └── schemas.py            # Pydantic models for extraction
+│   │   ├── engine.py             # 30+ deterministic rules + dynamic analysis
+│   │   ├── parser.py             # Checklist file parser (PDF/DOCX/TXT → rules)
+│   │   └── schemas.py            # Pydantic models (incl. DynamicChecklistRule)
 │   └── policies/
 │       ├── models.py             # DB tables (4 models)
 │       ├── generator.py          # Gemini policy generation
